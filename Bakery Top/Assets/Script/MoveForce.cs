@@ -55,7 +55,6 @@ public class MoveForce : MonoBehaviour
 
         RotatePlayerToCamera();
 
-        Debug.Log(moveSpeed);
     }
 
     private void FixedUpdate()
