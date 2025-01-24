@@ -995,7 +995,7 @@ PrefabInstance:
     - target: {fileID: 1115758845007579822, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 384190416}
+      objectReference: {fileID: 1777354507}
     - target: {fileID: 1115758845007579822, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -1127,6 +1127,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba06270bfc52aa44e819ede1ec358c70, type: 3}
+--- !u!4 &1777354507 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6745693815944237970, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+  m_PrefabInstance: {fileID: 1290840518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1825558348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7372429167360354026, guid: ba06270bfc52aa44e819ede1ec358c70, type: 3}
