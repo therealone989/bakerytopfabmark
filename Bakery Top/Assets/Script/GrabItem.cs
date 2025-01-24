@@ -12,6 +12,8 @@ public class Grabitem : MonoBehaviour
 
     private Rigidbody grabbedObject; // Das aktuell gehaltene Objekt
 
+    private MeshRenderer objectOutline;
+
     void Update()
     {
         // Prüft, ob der Spieler mit der linken Maustaste klickt
@@ -54,9 +56,13 @@ public class Grabitem : MonoBehaviour
         {
             // Prüft, ob das getroffene Objekt einen Rigidbody hat
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+            MeshRenderer mr = hit.collider.GetComponent<MeshRenderer>();
             if (rb != null)
             {
                 grabbedObject = rb;
+                objectOutline = mr;
+
+                objectOutline.materials[1].SetFloat("_Mode", 3);
                 grabbedObject.useGravity = false; // Deaktiviert die Schwerkraft
                 grabbedObject.linearDamping = 10f; // Erhöht den Widerstand, um unnatürliche Bewegungen zu vermeiden
                 grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
