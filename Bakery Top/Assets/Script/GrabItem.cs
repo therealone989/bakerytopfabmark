@@ -82,7 +82,7 @@ public class Grabitem : MonoBehaviour
     {
         if (renderer != null && renderer.materials.Length > 1)
         {
-            Material outlineMaterial = renderer.materials[1]; // Zweites Material
+            Material outlineMaterial = FindMaterialByName(renderer, "Outline"); // Zweites Material
             if (outlineMaterial.HasProperty("_OutlineEnabled"))
             {
                 outlineMaterial.SetFloat("_OutlineEnabled", 0f); // Aktiviert das Highlight
@@ -94,7 +94,7 @@ public class Grabitem : MonoBehaviour
     {
         if (renderer != null && renderer.materials.Length > 1)
         {
-            Material outlineMaterial = renderer.materials[1]; // Zweites Material
+            Material outlineMaterial = FindMaterialByName(renderer, "Outline"); // Zweites Material
             if (outlineMaterial.HasProperty("_OutlineEnabled"))
             {
                 outlineMaterial.SetFloat("_OutlineEnabled", 1f); // Deaktiviert das Highlight
@@ -151,5 +151,17 @@ public class Grabitem : MonoBehaviour
         Vector3 targetPosition = playerCamera.position + playerCamera.forward * holdDistance;
         Vector3 moveDirection = (targetPosition - grabbedObject.position);
         grabbedObject.linearVelocity = moveDirection * moveSpeed;
+    }
+
+    private Material FindMaterialByName(MeshRenderer renderer, string materialName)
+    {
+        foreach (var material in renderer.materials)
+        {
+            if (material.name.Contains(materialName))
+            {
+                return material;
+            }
+        }
+        return null;
     }
 }
