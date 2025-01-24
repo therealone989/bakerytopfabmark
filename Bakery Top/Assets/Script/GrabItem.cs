@@ -11,24 +11,23 @@ public class Grabitem : MonoBehaviour
     public Transform playerCamera; // Die Kamera des Spielers
 
     private Rigidbody grabbedObject; // Das aktuell gehaltene Objekt
-
-    private MeshRenderer objectOutline;
+    private MeshRenderer highlightedObjectRenderer; // Das aktuell gehighlightete Objekt
+    private MeshRenderer grabbedObjectRenderer; // Renderer des gehaltenen Objekts
 
     void Update()
     {
-        // Prüft, ob der Spieler mit der linken Maustaste klickt
+        // Highlight-Logik
+        HandleHighlight();
+
+        // Greifen und Loslassen mit Mausklick
         if (Input.GetMouseButtonDown(0))
         {
             if (grabbedObject == null)
             {
                 TryGrabObject(); // Versucht, ein Objekt zu greifen
-                if (grabbedObject != null) // Prüft, ob tatsächlich ein Objekt gegriffen wurde
+                if (grabbedObject != null)
                 {
                     Debug.Log("Grabbed: " + grabbedObject.transform.name);
-                }
-                else
-                {
-                    Debug.Log("Kein Objekt gefunden!");
                 }
             }
             else
@@ -44,29 +43,86 @@ public class Grabitem : MonoBehaviour
         }
     }
 
-    private void TryGrabObject()
+    private void HandleHighlight()
     {
         // Raycast von der Kamera in Blickrichtung
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
 
         // Zeichnet den Ray im Scene View
-        Debug.DrawRay(ray.origin, ray.direction * grabRange, Color.red, 1f);
+        Debug.DrawRay(ray.origin, ray.direction * grabRange, Color.blue);
 
         if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
         {
-            // Prüft, ob das getroffene Objekt einen Rigidbody hat
+            MeshRenderer hitRenderer = hit.collider.GetComponent<MeshRenderer>();
+
+            // Prüft, ob das Objekt den "Grabbable"-Tag hat
+            if (hit.collider.CompareTag("Grabbable") && hitRenderer != null)
+            {
+                // Falls ein neues Objekt getroffen wurde
+                if (highlightedObjectRenderer != hitRenderer)
+                {
+                    // Deaktiviere das alte Highlight
+                    DisableHighlight(highlightedObjectRenderer);
+
+                    // Aktiviere das Highlight für das neue Objekt
+                    EnableHighlight(hitRenderer);
+                    highlightedObjectRenderer = hitRenderer;
+                }
+
+                return;
+            }
+        }
+
+        // Kein gültiges Objekt getroffen, Highlight entfernen
+        DisableHighlight(highlightedObjectRenderer);
+        highlightedObjectRenderer = null;
+    }
+
+    private void EnableHighlight(MeshRenderer renderer)
+    {
+        if (renderer != null && renderer.materials.Length > 1)
+        {
+            Material outlineMaterial = renderer.materials[1]; // Zweites Material
+            if (outlineMaterial.HasProperty("_OutlineEnabled"))
+            {
+                outlineMaterial.SetFloat("_OutlineEnabled", 0f); // Aktiviert das Highlight
+            }
+        }
+    }
+
+    private void DisableHighlight(MeshRenderer renderer)
+    {
+        if (renderer != null && renderer.materials.Length > 1)
+        {
+            Material outlineMaterial = renderer.materials[1]; // Zweites Material
+            if (outlineMaterial.HasProperty("_OutlineEnabled"))
+            {
+                outlineMaterial.SetFloat("_OutlineEnabled", 1f); // Deaktiviert das Highlight
+            }
+        }
+    }
+
+    private void TryGrabObject()
+    {
+        // Raycast von der Kamera in Blickrichtung
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
+        {
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
             MeshRenderer mr = hit.collider.GetComponent<MeshRenderer>();
-            if (rb != null)
+
+            if (rb != null && hit.collider.CompareTag("Grabbable"))
             {
                 grabbedObject = rb;
-                objectOutline = mr;
+                grabbedObjectRenderer = mr;
 
-                objectOutline.materials[1].SetFloat("_Mode", 3);
+                // Outline bleibt aktiv, wenn gegriffen
+                EnableHighlight(grabbedObjectRenderer);
+
                 grabbedObject.useGravity = false; // Deaktiviert die Schwerkraft
-                grabbedObject.linearDamping = 10f; // Erhöht den Widerstand, um unnatürliche Bewegungen zu vermeiden
+                grabbedObject.linearDamping = 10f;
                 grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
-
             }
         }
     }
@@ -77,19 +133,23 @@ public class Grabitem : MonoBehaviour
         {
             grabbedObject.interpolation = RigidbodyInterpolation.None;
             grabbedObject.useGravity = true; // Aktiviert die Schwerkraft
-            grabbedObject.linearDamping = 1f; // Setzt den Standard-Widerstand zur�ck
+            grabbedObject.linearDamping = 1f;
             grabbedObject = null;
-            
 
+            // Highlight bleibt aktiv, wenn das Objekt noch angeschaut wird
+            if (highlightedObjectRenderer != grabbedObjectRenderer)
+            {
+                DisableHighlight(grabbedObjectRenderer);
+            }
+
+            grabbedObjectRenderer = null;
         }
     }
 
     private void MoveGrabbedObject()
     {
-        // Zielposition vor der Kamera
         Vector3 targetPosition = playerCamera.position + playerCamera.forward * holdDistance;
         Vector3 moveDirection = (targetPosition - grabbedObject.position);
-        grabbedObject.linearVelocity = moveDirection * moveSpeed; // Bewegt das Objekt zur Zielposition
+        grabbedObject.linearVelocity = moveDirection * moveSpeed;
     }
 }
-    
