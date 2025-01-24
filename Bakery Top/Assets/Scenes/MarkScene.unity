@@ -159,7 +159,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 0}
+    TrackingTarget: {fileID: 2146096321}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 66874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.51, y: 1.71, z: -6.9570003}
+  m_LocalPosition: {x: -77.61993, y: 1.71, z: -8.352383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -457,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.51, y: 1.71, z: -6.9570003}
+  m_LocalPosition: {x: -77.61993, y: 1.71, z: -8.352383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1067,6 +1067,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1115758845007579822, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 66876}
     - target: {fileID: 2341977706964043057, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1120,6 +1124,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+--- !u!4 &2146096321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7863559850914323869, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+  m_PrefabInstance: {fileID: 2075420659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6974322854502907420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1182,7 +1191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862143556705483856, guid: ba06270bfc52aa44e819ede1ec358c70, type: 3}
       propertyPath: m_TagString
-      value: Grabbable
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8510410871495843205, guid: ba06270bfc52aa44e819ede1ec358c70, type: 3}
       propertyPath: m_Materials.Array.size
