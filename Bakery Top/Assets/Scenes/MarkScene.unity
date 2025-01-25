@@ -1253,6 +1253,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+      propertyPath: holdDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 66876}
