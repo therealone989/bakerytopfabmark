@@ -28,4 +28,9 @@ public class InventoryManager : MonoBehaviour
             menuActivated = true;
         }
     }
+
+    public void AddItem(string itemName, int quantity)
+    {
+        Debug.Log("itemName = " + itemName + " quantity: " + quantity);
+    }
 }
