@@ -1613,10 +1613,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2341977706964043057, guid: 1205996228234b34b9847f664b2a7669, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 7106478009581535445, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1657,18 +1653,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+    - target: {fileID: 8219358230847278799, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 66876}
     - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
-      propertyPath: rotationSpeed
-      value: 800
-      objectReference: {fileID: 0}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 66876}
     - target: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
       propertyPath: cinemachineInputProvider
       value: 
@@ -1676,10 +1668,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2341977706964043057, guid: 1205996228234b34b9847f664b2a7669, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1563652926}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1205996228234b34b9847f664b2a7669, type: 3}
 --- !u!4 &1290840519 stripped
 Transform:
@@ -1962,25 +1951,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554849895}
   m_CullTransparentMesh: 1
---- !u!1 &1563652918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2341977706964043057, guid: 1205996228234b34b9847f664b2a7669, type: 3}
-  m_PrefabInstance: {fileID: 1290840518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1563652926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563652918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b457de1395cf24ba8871a7699e73e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highlightRange: 5
-  playerCamera: {fileID: 66876}
 --- !u!1 &2047921885
 GameObject:
   m_ObjectHideFlags: 0
