@@ -23,6 +23,9 @@ public class Grabitem : MonoBehaviour
 
     void Update()
     {
+        HandleItemPickup(); // Hinzugefügt
+
+
         if (Input.GetMouseButtonDown(0))
         {
             if (grabbedObject == null)
@@ -47,6 +50,28 @@ public class Grabitem : MonoBehaviour
             HandleRotation();
         }
     }
+
+    private void HandleItemPickup()
+    {
+        // Raycast aus der Kamera, um zu prüfen, ob ein Item im Blickfeld ist
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
+        {
+            // Prüfen, ob das angeschautes Objekt ein "Item"-Skript hat
+            Item item = hit.collider.GetComponent<Item>();
+            if (item != null)
+            {
+                Debug.Log($"Looking at item: {item.name}");
+
+                // Wenn "E" gedrückt wird, rufe PickUp auf
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    item.PickUp(); // Methode im Item-Skript
+                }
+            }
+        }
+    }
+
 
     private void TryGrabObject()
     {

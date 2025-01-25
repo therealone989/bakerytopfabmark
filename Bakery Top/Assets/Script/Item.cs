@@ -9,6 +9,8 @@ public class Item : MonoBehaviour
     [SerializeField]
     private int quantity;
 
+    [SerializeField]
+    private Sprite sprite;
 
     private InventoryManager inventoryManager;
 
@@ -17,12 +19,9 @@ public class Item : MonoBehaviour
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void PickUp()
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            inventoryManager.AddItem(itemName, quantity);
-            Destroy(gameObject);
-        }
+        inventoryManager.AddItem(itemName, quantity, sprite);
+        Destroy(gameObject);
     }
 }
