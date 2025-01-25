@@ -1,4 +1,5 @@
 using UnityEngine;
+using Unity.Cinemachine; // Import für Cinemachine
 
 public class Grabitem : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Grabitem : MonoBehaviour
 
     [Header("References")]
     public Transform playerCamera; // Die Kamera des Spielers
+    public CinemachineInputAxisController cinemachineInputProvider; // Referenz zur Cinemachine Input Provider-Komponente
 
     private Rigidbody grabbedObject; // Das aktuell gehaltene Objekt
     private MeshRenderer highlightedObjectRenderer; // Das aktuell gehighlightete Objekt
     private MeshRenderer grabbedObjectRenderer; // Renderer des gehaltenen Objekts
+    private bool isRotating = false; // Status, ob Rotation aktiv ist
 
     void Update()
     {
@@ -56,7 +59,7 @@ public class Grabitem : MonoBehaviour
             AdjustHoldDistance();
 
             // Objektrotation mit R anpassen
-            RotateObject();
+            HandleRotation();
         }
     }
 
@@ -162,9 +165,6 @@ public class Grabitem : MonoBehaviour
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
 
-            // Snap auf Oberfläche
-            SnapToSurface(grabbedObject);
-
             grabbedObject = null;
 
             if (highlightedObjectRenderer != grabbedObjectRenderer)
@@ -173,14 +173,6 @@ public class Grabitem : MonoBehaviour
             }
 
             grabbedObjectRenderer = null;
-        }
-    }
-
-    private void SnapToSurface(Rigidbody obj)
-    {
-        if (Physics.Raycast(obj.position, Vector3.down, out RaycastHit hit, snapThreshold))
-        {
-            obj.position = hit.point;
         }
     }
 
@@ -201,15 +193,27 @@ public class Grabitem : MonoBehaviour
         }
     }
 
-    private void RotateObject()
+    private void HandleRotation()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            isRotating = true;
+            cinemachineInputProvider.enabled = false; // Deaktiviert die Kamerasteuerung
+        }
+
+        if (Input.GetKey(KeyCode.R) && isRotating)
         {
             float rotationX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float rotationY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
 
             grabbedObject.transform.Rotate(playerCamera.up, -rotationX, Space.World);
             grabbedObject.transform.Rotate(playerCamera.right, rotationY, Space.World);
+        }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            isRotating = false;
+            cinemachineInputProvider.enabled = true; // Aktiviert die Kamerasteuerung wieder
         }
     }
 
