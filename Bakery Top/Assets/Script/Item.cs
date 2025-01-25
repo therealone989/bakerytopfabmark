@@ -12,6 +12,10 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
+
     private InventoryManager inventoryManager;
 
     void Start()
@@ -21,7 +25,7 @@ public class Item : MonoBehaviour
 
     public void PickUp()
     {
-        inventoryManager.AddItem(itemName, quantity, sprite);
+        inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
         Destroy(gameObject);
     }
 }
