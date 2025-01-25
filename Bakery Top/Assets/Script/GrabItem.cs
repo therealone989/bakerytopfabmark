@@ -3,112 +3,48 @@ using Unity.Cinemachine; // Import für Cinemachine
 
 public class Grabitem : MonoBehaviour
 {
-    [Header("Settings")]
-    public float grabRange = 5f; // Reichweite des Greifens
-    public float holdDistance = 2f; // Abstand des gehaltenen Objekts zur Kamera
-    public float moveSpeed = 10f; // Wie schnell das Objekt bewegt wird
-    public float throwForce = 500f; // Die Wurfkraft
-    public float minHoldDistance = 1f; // Minimaler Halteabstand
-    public float maxHoldDistance = 6f; // Maximaler Halteabstand
-    public float snapThreshold = 0.5f; // Höhe für das "Snapping"
-    public float rotationSpeed = 50f; // Rotationsgeschwindigkeit
+     [Header("Settings")]
+    public float grabRange = 5f;
+    public float holdDistance = 2f;
+    public float moveSpeed = 10f;
+    public float throwForce = 500f;
+    public float minHoldDistance = 1f;
+    public float maxHoldDistance = 6f;
+    public float snapThreshold = 0.5f;
+    public float rotationSpeed = 50f;
 
     [Header("References")]
-    public Transform playerCamera; // Die Kamera des Spielers
-    public CinemachineInputAxisController cinemachineInputProvider; // Referenz zur Cinemachine Input Provider-Komponente
+    public Transform playerCamera;
+    public CinemachineInputAxisController cinemachineInputProvider;
 
-    private Rigidbody grabbedObject; // Das aktuell gehaltene Objekt
-    private MeshRenderer highlightedObjectRenderer; // Das aktuell gehighlightete Objekt
-    private MeshRenderer grabbedObjectRenderer; // Renderer des gehaltenen Objekts
-    private bool isRotating = false; // Status, ob Rotation aktiv ist
+    private Rigidbody grabbedObject;
+    private MeshRenderer grabbedObjectRenderer;
+    private bool isRotating = false;
 
     void Update()
     {
-        // Highlight-Logik
-        HandleHighlight();
-
-        // Greifen und Loslassen mit Mausklick
         if (Input.GetMouseButtonDown(0))
         {
             if (grabbedObject == null)
             {
-                TryGrabObject(); // Versucht, ein Objekt zu greifen
-                if (grabbedObject != null)
-                {
-                    Debug.Log("Grabbed: " + grabbedObject.transform.name);
-                }
+                TryGrabObject();
             }
             else
             {
-                ReleaseObject(); // Lässt das Objekt los
+                ReleaseObject();
             }
         }
 
-        // Objekt werfen mit der Taste F
         if (grabbedObject != null && Input.GetKeyDown(KeyCode.F))
         {
             ThrowObject();
         }
 
-        // Bewegt das gehaltene Objekt
         if (grabbedObject != null)
         {
             MoveGrabbedObject();
-
-            // Halteabstand mit Mausrad anpassen
             AdjustHoldDistance();
-
-            // Objektrotation mit R anpassen
             HandleRotation();
-        }
-    }
-
-    private void HandleHighlight()
-    {
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        Debug.DrawRay(ray.origin, ray.direction * grabRange, Color.blue);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
-        {
-            MeshRenderer hitRenderer = hit.collider.GetComponent<MeshRenderer>();
-
-            if (hit.collider.CompareTag("Grabbable") && hitRenderer != null)
-            {
-                if (highlightedObjectRenderer != hitRenderer)
-                {
-                    DisableHighlight(highlightedObjectRenderer);
-                    EnableHighlight(hitRenderer);
-                    highlightedObjectRenderer = hitRenderer;
-                }
-                return;
-            }
-        }
-
-        DisableHighlight(highlightedObjectRenderer);
-        highlightedObjectRenderer = null;
-    }
-
-    private void EnableHighlight(MeshRenderer renderer)
-    {
-        if (renderer != null && renderer.materials.Length > 1)
-        {
-            Material outlineMaterial = FindMaterialByName(renderer, "Outline");
-            if (outlineMaterial.HasProperty("_OutlineEnabled"))
-            {
-                outlineMaterial.SetFloat("_OutlineEnabled", 0f);
-            }
-        }
-    }
-
-    private void DisableHighlight(MeshRenderer renderer)
-    {
-        if (renderer != null && renderer.materials.Length > 1)
-        {
-            Material outlineMaterial = FindMaterialByName(renderer, "Outline");
-            if (outlineMaterial.HasProperty("_OutlineEnabled"))
-            {
-                outlineMaterial.SetFloat("_OutlineEnabled", 1f);
-            }
         }
     }
 
@@ -119,15 +55,10 @@ public class Grabitem : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
         {
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-            MeshRenderer mr = hit.collider.GetComponent<MeshRenderer>();
-
             if (rb != null && hit.collider.CompareTag("Grabbable"))
             {
                 grabbedObject = rb;
-                grabbedObjectRenderer = mr;
-
-                EnableHighlight(grabbedObjectRenderer);
-
+                grabbedObjectRenderer = hit.collider.GetComponent<MeshRenderer>();
                 grabbedObject.useGravity = false;
                 grabbedObject.linearDamping = 10f;
                 grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
@@ -141,19 +72,9 @@ public class Grabitem : MonoBehaviour
         {
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
-
             grabbedObject.AddForce(playerCamera.forward * throwForce);
-
             grabbedObject = null;
-
-            if (highlightedObjectRenderer != grabbedObjectRenderer)
-            {
-                DisableHighlight(grabbedObjectRenderer);
-            }
-
             grabbedObjectRenderer = null;
-
-            Debug.Log("Object thrown!");
         }
     }
 
@@ -164,14 +85,7 @@ public class Grabitem : MonoBehaviour
             grabbedObject.interpolation = RigidbodyInterpolation.None;
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
-
             grabbedObject = null;
-
-            if (highlightedObjectRenderer != grabbedObjectRenderer)
-            {
-                DisableHighlight(grabbedObjectRenderer);
-            }
-
             grabbedObjectRenderer = null;
         }
     }
@@ -189,7 +103,6 @@ public class Grabitem : MonoBehaviour
         if (scroll != 0)
         {
             holdDistance = Mathf.Clamp(holdDistance + scroll, minHoldDistance, maxHoldDistance);
-            Debug.Log("Hold Distance: " + holdDistance);
         }
     }
 
@@ -198,7 +111,13 @@ public class Grabitem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             isRotating = true;
-            cinemachineInputProvider.enabled = false; // Deaktiviert die Kamerasteuerung
+
+            // Setzt die Rotation und Winkelgeschwindigkeit des Objekts zurück
+            grabbedObject.transform.rotation = Quaternion.identity;
+            grabbedObject.angularVelocity = Vector3.zero;
+
+            // Deaktiviert die Kamerasteuerung
+            cinemachineInputProvider.enabled = false;
         }
 
         if (Input.GetKey(KeyCode.R) && isRotating)
@@ -213,19 +132,9 @@ public class Grabitem : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.R))
         {
             isRotating = false;
-            cinemachineInputProvider.enabled = true; // Aktiviert die Kamerasteuerung wieder
-        }
-    }
 
-    private Material FindMaterialByName(MeshRenderer renderer, string materialName)
-    {
-        foreach (var material in renderer.materials)
-        {
-            if (material.name.Contains(materialName))
-            {
-                return material;
-            }
+            // Aktiviert die Kamerasteuerung wieder
+            cinemachineInputProvider.enabled = true;
         }
-        return null;
     }
 }
