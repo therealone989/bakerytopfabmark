@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     private int quantity;
 
     [SerializeField]
-    private Sprite sprite;
+    private Sprite[] sprite;
 
     [TextArea]
     [SerializeField]
@@ -25,7 +25,11 @@ public class Item : MonoBehaviour
 
     public void PickUp()
     {
+
+        // Übergibt das ausgewählte Sprite an den InventoryManager
         inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+
+        // Zerstört das Objekt nach dem Aufheben
         Destroy(gameObject);
     }
 }
