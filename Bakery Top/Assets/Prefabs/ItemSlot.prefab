@@ -97,6 +97,8 @@ MonoBehaviour:
   isFull: 0
   quantityText: {fileID: 4446316503253169682}
   itemImage: {fileID: 707370803979982068}
+  selectedShader: {fileID: 6143474385567112421}
+  thisItemSelected: 0
 --- !u!1 &1242998324351583066
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,8 +300,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

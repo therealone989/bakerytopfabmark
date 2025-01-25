@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
     // ====== ITEM DATEN ======= //
     public string itemName;
@@ -14,6 +16,15 @@ public class ItemSlot : MonoBehaviour
     // ====== ITEM SLOT ======= //
     [SerializeField] private TMP_Text quantityText;
     [SerializeField] private Image itemImage;
+    public GameObject selectedShader;
+    public bool thisItemSelected;
+
+    private InventoryManager inventoryManager;
+
+    private void Start()
+    {
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+    }
 
     public void AddItem(string itemName, int quantity, Sprite sprite)
     {
@@ -26,4 +37,29 @@ public class ItemSlot : MonoBehaviour
         quantityText.enabled = true;
         itemImage.sprite = sprite;
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            OnLeftClick();
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            OnRightClick();
+        }
+    }
+
+    public void OnLeftClick()
+    {
+        inventoryManager.DeselectAllSlots();
+        selectedShader.SetActive(true);
+        thisItemSelected = true;
+    }
+    public void OnRightClick()
+    {
+        
+    }
+
+
 }

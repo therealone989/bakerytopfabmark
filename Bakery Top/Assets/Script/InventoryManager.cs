@@ -21,12 +21,16 @@ public class InventoryManager : MonoBehaviour
             // Time.timeScale = 1;  // OPTIONAL -- AKTIVIERT WIEDER ZEIT
             InventoryMenu.SetActive(false);
             menuActivated = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else if (Input.GetButtonDown("Inventory") && !menuActivated)
         {
             // Time.timeScale = 0;  // OPTIONAL -- STOPPT ZEIT BEI AKTIVEN MENÜ - Physics Stoppen auch, Animations können Fehler geben
             InventoryMenu.SetActive(true);
             menuActivated = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -39,6 +43,15 @@ public class InventoryManager : MonoBehaviour
                 itemSlot[i].AddItem(itemName, quantity, sprite);
                 return;
             }
+        }
+    }
+
+    public void DeselectAllSlots()
+    {
+        for(int i = 0; i < itemSlot.Length; i++)
+        {
+            itemSlot[i].selectedShader.SetActive(false);
+            itemSlot[i].thisItemSelected = false;
         }
     }
 }
