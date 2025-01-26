@@ -34,16 +34,24 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(string itemName, int quantity, Sprite[] sprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite[] itemSprite, string itemDescription)
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].isFull == false)
+            if (itemSlot[i].isFull == false && itemSlot[i].itemName == itemName|| itemSlot[i].quantity == 0)
             {
-                itemSlot[i].AddItem(itemName, quantity, sprite, itemDescription);
-                return;
+                // Rekursiv falls das inventar voll ist, soll es dann zum nächsten slot gehen weil es ja voll ist und der name ist gleich
+                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+
+                // WENN ES RESTE GIBT DANN
+                if(leftOverItems > 0)
+                {
+                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                }
+                return leftOverItems;
             }
         }
+        return quantity;
     }
 
     public void DeselectAllSlots()

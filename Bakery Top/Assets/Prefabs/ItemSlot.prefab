@@ -98,6 +98,7 @@ MonoBehaviour:
   isFull: 0
   itemDescription: 
   emptySprite: {fileID: 21300000, guid: 927585be2b3b7fc4aabac9a29203b99a, type: 3}
+  maxNumberOfItems: 5
   quantityText: {fileID: 4446316503253169682}
   itemImage: {fileID: 707370803979982068}
   selectedShader: {fileID: 6143474385567112421}

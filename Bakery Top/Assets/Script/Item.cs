@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     private int quantity;
 
     [SerializeField]
-    private Sprite[] sprite;
+    private Sprite[] itemSprite;
 
     [TextArea]
     [SerializeField]
@@ -26,10 +26,17 @@ public class Item : MonoBehaviour
     public void PickUp()
     {
 
-        // Übergibt das ausgewählte Sprite an den InventoryManager
-        inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite, itemDescription);
+        if(leftOverItems <= 0)
+        {
+            // Zerstört das Objekt nach dem Aufheben
+            Destroy(gameObject);
+        } else
+        {
+            // TODO: INVENAR VOLL POPUP!!!!!!!!!!!!
+            quantity = leftOverItems;
+            
+        }
 
-        // Zerstört das Objekt nach dem Aufheben
-        Destroy(gameObject);
     }
 }

@@ -61,8 +61,6 @@ public class Grabitem : MonoBehaviour
             Item item = hit.collider.GetComponent<Item>();
             if (item != null)
             {
-                Debug.Log($"Looking at item: {item.name}");
-
                 // Wenn "E" gedrückt wird, rufe PickUp auf
                 if (Input.GetKeyDown(KeyCode.E))
                 {

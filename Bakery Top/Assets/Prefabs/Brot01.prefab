@@ -156,6 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487bd34d6c434f9419d431a795616ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Brot
-  quantity: 1
-  sprite: {fileID: 21300000, guid: 3bffff6abb5d6454f84ca0b980a7cde9, type: 3}
+  itemName: Pan Bimbo
+  quantity: 4
+  itemSprite:
+  - {fileID: 21300000, guid: 3bffff6abb5d6454f84ca0b980a7cde9, type: 3}
+  - {fileID: 21300000, guid: 193ce3f8eee761c4da299fc78871d2dc, type: 3}
+  itemDescription: "Ein einfaches Brot, es verkauft sich wie Brot und f\xFChlt sich
+    wie Brot an."
