@@ -2065,6 +2065,7 @@ GameObject:
   - component: {fileID: 783680240505085571}
   - component: {fileID: 4553646165844213129}
   - component: {fileID: 5798369602779684278}
+  - component: {fileID: 9198713297761510812}
   m_Layer: 0
   m_Name: Celtic.001
   m_TagString: Grabbable
@@ -2081,7 +2082,7 @@ Transform:
   m_GameObject: {fileID: 4429181754009619700}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.006, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2226,6 +2227,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4048188073887394337, guid: 72cbf7d2a2a226a43af4925a53f0df7b, type: 3}
+--- !u!114 &9198713297761510812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429181754009619700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188eabc60ffd02046b1a63fbdc089831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basketBreads:
+  - {fileID: 2146130862726142687}
+  - {fileID: 1148434593388635730}
+  - {fileID: 2002024034059201825}
+  - {fileID: 48314019359028526}
+  breadPrefab: {fileID: 2728717022011842687, guid: 9947a8bf903e490428217556c4184e5d, type: 3}
+  playerHand: {fileID: 0}
+  raycastRange: 2
+  playerCamera: {fileID: 0}
 --- !u!1 &5143679724574820918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,6 +3798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brot01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3784,6 +3810,11 @@ PrefabInstance:
 --- !u!4 &341111942074825960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
+  m_PrefabInstance: {fileID: 230078290482567939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1148434593388635730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
   m_PrefabInstance: {fileID: 230078290482567939}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &894752368487155839
@@ -3854,11 +3885,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brot01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e502973009d2575418a4526edbb87d39, type: 3}
+--- !u!1 &48314019359028526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
+  m_PrefabInstance: {fileID: 894752368487155839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &855813622769692564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
@@ -3932,6 +3972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brot01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3940,6 +3984,11 @@ PrefabInstance:
 --- !u!4 &1622217302650585189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
+  m_PrefabInstance: {fileID: 1227793263327864718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2146130862726142687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
   m_PrefabInstance: {fileID: 1227793263327864718}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1660130142253060208
@@ -4010,6 +4059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brot01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4018,5 +4071,10 @@ PrefabInstance:
 --- !u!4 &1189881506090514331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
+  m_PrefabInstance: {fileID: 1660130142253060208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2002024034059201825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
   m_PrefabInstance: {fileID: 1660130142253060208}
   m_PrefabAsset: {fileID: 0}
