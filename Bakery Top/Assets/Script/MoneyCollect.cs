@@ -5,16 +5,24 @@ public class MoneyCollect : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string collectAnimationTrigger = "Collect";
 
-    private bool hashitGround = false;
-        private void Start()
+    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden berührt hat
+
+    private void Start()
     {
-        animator.enabled = false;
+        animator.enabled = false; // Animator standardmäßig deaktivieren
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(!hashitGround && collision.collider.CompareTag("Ground"))
+        if (!hasHitGround && collision.collider.CompareTag("Ground"))
         {
-            hashitGround = true;
+            hasHitGround = true;
+
+            GameObject emptyObject = new GameObject("MyEmptyObject");
+            emptyObject.transform.position = this.transform.position;
+
+            transform.parent = emptyObject.transform;
+
             ActivateAnimator();
         }
 
@@ -24,9 +32,10 @@ public class MoneyCollect : MonoBehaviour
         }
     }
 
+
     private void ActivateAnimator()
     {
-        if(animator != null)
+        if (animator != null)
         {
             animator.enabled = true;
         }
@@ -38,6 +47,6 @@ public class MoneyCollect : MonoBehaviour
         {
             animator.SetTrigger(collectAnimationTrigger);
         }
-        Destroy(gameObject, 1.0f);
+        Destroy(gameObject, 1.0f); // Objekt nach 1 Sekunde zerstören
     }
 }

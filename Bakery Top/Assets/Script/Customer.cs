@@ -52,7 +52,7 @@ public class Customer : MonoBehaviour
         if(moneyPrefab != null && moneyspawnPoint != null)
         {
             GameObject money = Instantiate(moneyPrefab, moneyspawnPoint.position, Quaternion.identity);
-
+            
             Rigidbody rb = money.GetComponent<Rigidbody>();
             if(rb != null)
             {
