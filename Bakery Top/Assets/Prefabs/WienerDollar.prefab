@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2408347998383599204}
   collectAnimationTrigger: Collect
+  collider: {fileID: 4860704562742940237}
 --- !u!95 &2408347998383599204
 Animator:
   serializedVersion: 7

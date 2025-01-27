@@ -4,12 +4,14 @@ public class MoneyCollect : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private string collectAnimationTrigger = "Collect";
+    [SerializeField] public BoxCollider collider;
 
-    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden ber¸hrt hat
+    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden berÅErt hat
 
     private void Start()
     {
         animator.enabled = false; // Animator standardm‰ﬂig deaktivieren
+        collider = GetComponent<BoxCollider>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,14 +26,18 @@ public class MoneyCollect : MonoBehaviour
             transform.parent = emptyObject.transform;
 
             ActivateAnimator();
+            collider.isTrigger = true;
         }
+    }
 
-        if (collision.gameObject.CompareTag("Player"))
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Player"))
         {
             CollectMoney();
         }
     }
-
 
     private void ActivateAnimator()
     {
