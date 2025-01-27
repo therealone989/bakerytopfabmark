@@ -4,12 +4,12 @@ using Unity.Cinemachine; // Import für Cinemachine
 public class Grabitem : MonoBehaviour
 {
     [Header("Settings")]
-    public float grabRange = 5f;
-    public float holdDistance = 2f;
+    public float grabRange = 2f;
+    public float holdDistance = 1f;
     public float moveSpeed = 10f;
     public float throwForce = 500f;
     public float minHoldDistance = 1f;
-    public float maxHoldDistance = 6f;
+    public float maxHoldDistance = 3f;
     public float snapThreshold = 0.5f;
     public float rotationSpeed = 50f;
 
@@ -160,4 +160,19 @@ public class Grabitem : MonoBehaviour
             cinemachineInputProvider.enabled = true;
         }
     }
+    public void GrabObject(GameObject item)
+    {
+        Rigidbody rb = item.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            grabbedObject = rb;
+            grabbedObjectRenderer = item.GetComponent<MeshRenderer>();
+            grabbedObject.useGravity = false;
+            grabbedObject.linearDamping = 10f;
+            grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
+
+        }
+    }
+
+
 }

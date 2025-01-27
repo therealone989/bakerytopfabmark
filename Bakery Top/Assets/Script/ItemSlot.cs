@@ -110,9 +110,58 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             itemDescriptionImage.sprite = emptySprite;
         }
     }
+
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        itemImage.sprite = emptySprite;
+
+        ItemDescriptionNameText.text = "";
+        ItemDescriptionText.text = "";
+        itemDescriptionImage.sprite = emptySprite;
+    }
+
     public void OnRightClick()
     {
-        
+        if (quantity <= 0) return; // Slot ist leer, nichts zu tun
+
+        Debug.Log("RECHTS");
+        // Spawne das Item vor dem Spieler
+        GameObject spawnedItem = SpawnItem();
+
+        // Reduziere die Menge im Slot
+        quantity--;
+        quantityText.text = quantity > 0 ? quantity.ToString() : "";
+        isFull = quantity > 0;
+        if(this.quantity <= 0)
+        {
+            EmptySlot();
+        }
+
+        // Schließe das Inventar
+        inventoryManager.ToggleInventory(false);
+
+        // Übergib das gespawnte Item an den Grabber
+        FindFirstObjectByType<Grabitem>().GrabObject(spawnedItem);
+    }
+
+    private GameObject SpawnItem()
+    {
+        // Spawne das Item vor dem Spieler
+        Transform playerCamera = Camera.main.transform;
+        Vector3 spawnPosition = playerCamera.position + playerCamera.forward * 1.5f;
+
+        GameObject itemPrefab = Resources.Load<GameObject>("Prefabs/" + itemName);
+        if (itemPrefab != null)
+        {
+            GameObject spawnedItem = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+            return spawnedItem;
+        }
+        else
+        {
+            Debug.LogError("Item prefab not found for: " + itemName);
+            return null;
+        }
     }
 
 

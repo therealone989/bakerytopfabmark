@@ -5,7 +5,7 @@ public class ShowItemHighlight : MonoBehaviour
 {
 
     [Header("Settings")]
-    public float highlightRange = 5f; // Reichweite des Highlightens
+    public float highlightRange = 2f; // Reichweite des Highlightens
     public Transform playerCamera; // Die Kamera des Spielers
 
     private MeshRenderer highlightedObjectRenderer; // Das aktuell gehighlightete Objekt

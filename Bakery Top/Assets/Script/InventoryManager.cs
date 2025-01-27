@@ -64,4 +64,13 @@ public class InventoryManager : MonoBehaviour
             itemSlot[i].thisItemSelected = false;
         }
     }
+
+    public void ToggleInventory(bool isActive)
+    {
+        InventoryMenu.SetActive(isActive);
+        menuActivated = isActive;
+
+        Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isActive;
+    }
 }
