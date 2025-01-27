@@ -117,12 +117,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     private void EmptySlot()
     {
         Debug.Log("EMPTY");
-        quantityText.enabled = false;
-        itemImage.sprite = emptySprite;
 
-        ItemDescriptionNameText.text = "";
+        itemImage.sprite = emptySprite;
+        itemName = "";
+        itemSprite = emptySprite;
+        quantityText.enabled = false;
+
+        itemDescriptionImageSprite = emptySprite;
         ItemDescriptionText.text = "";
-        itemDescriptionImage.sprite = emptySprite;
+        itemDescription = "";
+
+        // Setze das Flag für 'isFull' zurück, falls nötig
+        isFull = false;
     }
 
     public void OnRightClick()
