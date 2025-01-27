@@ -10,14 +10,6 @@ public class ItemSO : ScriptableObject
     public AttributesToChange attributeToChange = new AttributesToChange();
     public int amountToChangeAttribute;
 
-    public void SellItem()
-    {
-        if(statToChange == StatToChange.money)
-        {
-            GameObject.Find("Player").GetComponent<Player>().addMoney(amountToChangeStat);
-        }
-    }
-
     public enum StatToChange
     {
         none,

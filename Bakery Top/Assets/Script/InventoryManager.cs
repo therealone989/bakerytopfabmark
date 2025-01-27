@@ -36,18 +36,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void SellItem(string itemName)
-    {
-        for(int i = 0; i < itemSOs.Length; i++)
-        {
-            if (itemSOs[i].itenName == itemName)
-            {
-                Debug.Log(itemSOs[i].itenName + " " + itemName);
-                itemSOs[i].SellItem();
-            }
-        }
-    }
-
     public int AddItem(string itemName, int quantity, Sprite[] itemSprite, string itemDescription)
     {
         for (int i = 0; i < itemSlot.Length; i++)

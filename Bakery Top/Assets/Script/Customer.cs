@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    private Player player;
+    [SerializeField] private ItemSeller itemSeller;
     private InventoryManager iM;
 
     private void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
         iM = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
@@ -16,9 +15,21 @@ public class Customer : MonoBehaviour
         Item item = collision.collider.GetComponent<Item>();
         if(item != null)
         {
-            string itemName = item.GetItemName();
-            iM.SellItem(itemName);
-            Destroy(collision.collider.gameObject);
+            // Ruft das ItemSO vom Item-Skript ab
+            ItemSO itemData = item.GetItemData();
+
+            if (itemData != null)
+            {
+                // Übergibt das Item zum Verkauf an den ItemSeller
+                itemSeller.SellItem(itemData);
+
+                // Zerstört das Objekt nach dem Verkauf
+                Destroy(collision.collider.gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("Das Item hat keine gültigen Daten und kann nicht verkauft werden.");
+            }
 
         }
     }

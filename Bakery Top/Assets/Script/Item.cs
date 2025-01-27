@@ -16,6 +16,8 @@ public class Item : MonoBehaviour
     [SerializeField]
     private string itemDescription;
 
+    [SerializeField] private ItemSO itemData;
+
     private InventoryManager inventoryManager;
 
     void Start()
@@ -43,5 +45,10 @@ public class Item : MonoBehaviour
     public string GetItemName()
     {
         return this.itemName;
+    }
+
+    public ItemSO GetItemData()
+    {
+        return itemData;
     }
 }
