@@ -39,4 +39,9 @@ public class Item : MonoBehaviour
         }
 
     }
+
+    public string GetItemName()
+    {
+        return this.itemName;
+    }
 }

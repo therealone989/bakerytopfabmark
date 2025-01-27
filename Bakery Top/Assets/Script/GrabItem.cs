@@ -3,7 +3,7 @@ using Unity.Cinemachine; // Import für Cinemachine
 
 public class Grabitem : MonoBehaviour
 {
-     [Header("Settings")]
+    [Header("Settings")]
     public float grabRange = 5f;
     public float holdDistance = 2f;
     public float moveSpeed = 10f;

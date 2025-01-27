@@ -7,6 +7,8 @@ public class InventoryManager : MonoBehaviour
     private bool menuActivated;
     public ItemSlot[] itemSlot;
 
+    public ItemSO[] itemSOs;
+
 
     void Start()
     {
@@ -31,6 +33,18 @@ public class InventoryManager : MonoBehaviour
             menuActivated = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+        }
+    }
+
+    public void SellItem(string itemName)
+    {
+        for(int i = 0; i < itemSOs.Length; i++)
+        {
+            if (itemSOs[i].itenName == itemName)
+            {
+                Debug.Log(itemSOs[i].itenName + " " + itemName);
+                itemSOs[i].SellItem();
+            }
         }
     }
 
