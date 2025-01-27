@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.382662
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.275768
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.5802188
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e0a0ed2510211ec4b89aa795750aa5d0, type: 2}
     - target: {fileID: 919132149155446097, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_Name
-      value: Muffin 1
+      value: Muffin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ce83b1b1fbb9d38409dd57b45f8f25ad, type: 3}
       propertyPath: m_TagString
@@ -164,5 +164,5 @@ MonoBehaviour:
   itemSprite:
   - {fileID: 21300000, guid: 8703eb4dc9dbd674dbfabfb0c0cedf6c, type: 3}
   - {fileID: 21300000, guid: 2da8ec7b062e2c14bbf5b73bfb4d9258, type: 3}
-  itemDescription: 
+  itemDescription: Ein Muffiin mit Leckeren Schokostueckchen O_O. 15 Dollar Wert.
   itemData: {fileID: 11400000, guid: dcac7e64948fb5f48a093a02b718b83a, type: 2}
