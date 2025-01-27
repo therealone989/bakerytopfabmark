@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 4553646165844213129}
   - component: {fileID: 5798369602779684278}
   - component: {fileID: 9198713297761510812}
+  - component: {fileID: 1451096717354522529}
   m_Layer: 0
   m_Name: Celtic.001
   m_TagString: Grabbable
@@ -2248,6 +2249,26 @@ MonoBehaviour:
   playerHand: {fileID: 0}
   raycastRange: 2
   playerCamera: {fileID: 0}
+--- !u!114 &1451096717354522529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429181754009619700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487bd34d6c434f9419d431a795616ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Brotkorb
+  quantity: 1
+  itemSprite:
+  - {fileID: 21300000, guid: cfec1fc8211ed554eae6f2960a9608ac, type: 3}
+  - {fileID: 21300000, guid: d0113d45b58555847b2ff5738cb1802f, type: 3}
+  itemDescription: "Enth\xE4lt 5 Pan Bimbo, Dr\xFCcke E zum Interagieren. Wirf das
+    Brot hier rein, um den Korb zu f\xFCllen"
+  itemData: {fileID: 11400000, guid: cd55da4b5989e1b4384a2c33da90ac42, type: 2}
 --- !u!1 &5143679724574820918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,7 +2387,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4828393385377704202}
   - component: {fileID: 6414755311386005052}
-  - component: {fileID: 9105411749778369674}
   m_Layer: 0
   m_Name: Brotkorb
   m_TagString: Grabbable
@@ -2417,23 +2437,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9105411749778369674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5209035976105063344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487bd34d6c434f9419d431a795616ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: Brotkorb
-  quantity: 1
-  itemSprite: []
-  itemDescription: 
-  itemData: {fileID: 0}
 --- !u!1 &5694587060983692421
 GameObject:
   m_ObjectHideFlags: 0
