@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
@@ -8,7 +8,6 @@ public class Customer : MonoBehaviour
     [SerializeField] public Transform moneyspawnPoint;
     [SerializeField] public float throwForce = 5f;
     private InventoryManager iM;
-
 
     private void Start()
     {
@@ -20,7 +19,6 @@ public class Customer : MonoBehaviour
         HandleItem(collision);
     }
 
-
     public void HandleItem(Collision collision)
     {
         Item item = collision.collider.GetComponent<Item>();
@@ -31,33 +29,38 @@ public class Customer : MonoBehaviour
 
             if (itemData != null)
             {
-                // ‹bergibt das Item zum Verkauf an den ItemSeller
+                // √úbergibt das Item zum Verkauf an den ItemSeller
                 itemSeller.SellItem(itemData);
 
-                // Zerstˆrt das Objekt nach dem Verkauf
+                // Zerst√∂rt das Objekt nach dem Verkauf
                 Destroy(collision.collider.gameObject);
 
                 StartCoroutine(ThrowMoneyWithDelay(2f));
             }
             else
             {
-                Debug.LogWarning("Das Item hat keine gÅEtigen Daten und kann nicht verkauft werden.");
+                Debug.LogWarning("Das Item hat keine g√ºltigen Daten und kann nicht verkauft werden.");
             }
         }
     }
+
     private IEnumerator ThrowMoneyWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        if(moneyPrefab != null && moneyspawnPoint != null)
+        if (moneyPrefab != null && moneyspawnPoint != null)
         {
             GameObject money = Instantiate(moneyPrefab, moneyspawnPoint.position, Quaternion.identity);
-            
+
             Rigidbody rb = money.GetComponent<Rigidbody>();
-            if(rb != null)
+            if (rb != null)
             {
-                Vector3 throwDirection = (moneyspawnPoint.forward + Vector3.up).normalized;
-                rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
+                // Zuf√§llige Richtung innerhalb eines 45-Grad-Winkels links oder rechts
+                float randomAngle = Random.Range(-60f, 60f);
+                Quaternion rotation = Quaternion.Euler(0, randomAngle, 0);
+                Vector3 throwDirection = rotation * moneyspawnPoint.forward + Vector3.up;
+
+                rb.AddForce(throwDirection.normalized * throwForce, ForceMode.Impulse);
             }
             else
             {
@@ -66,3 +69,4 @@ public class Customer : MonoBehaviour
         }
     }
 }
+
