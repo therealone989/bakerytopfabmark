@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -66,7 +66,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // WENN MEHR ANKOMMT ALS LIMIT ERLAUBT DANN 
         if(this.quantity >= maxNumberOfItems)
         {
-            // ItemSlot ist voll (übergebenene Menge = Maximal im Slot verfügbare Plätze) 
+            // ItemSlot ist voll (ãƒ»ergebenene Menge = Maximal im Slot verfãƒ»bare Plèˆ©ze) 
             quantityText.text = maxNumberOfItems.ToString();
             quantityText.enabled = true;
             isFull = true;
@@ -81,7 +81,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         quantityText.text = this.quantity.ToString();
         quantityText.enabled = true;
 
-        return 0;  // Keine Überreste
+        return 0;  // Keine Ã¼berreste
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -138,10 +138,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             EmptySlot();
         }
 
-        // Schließe das Inventar
+        // SchlieÃŸe das Inventar
         inventoryManager.ToggleInventory(false);
 
-        // Übergib das gespawnte Item an den Grabber
+        // Ãœbergib das gespawnte Item an den Grabber
         FindFirstObjectByType<Grabitem>().GrabObject(spawnedItem);
     }
 
