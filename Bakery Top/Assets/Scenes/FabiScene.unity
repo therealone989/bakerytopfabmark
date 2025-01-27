@@ -1548,7 +1548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6694c388a34eec742b51a54bf4545cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSeller: {fileID: 300581051}
   moneyPrefab: {fileID: 2477796060607144944, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
   moneyspawnPoint: {fileID: 293041475}
   throwForce: 5
@@ -1609,63 +1608,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9947a8bf903e490428217556c4184e5d, type: 3}
---- !u!1001 &4218198668193494420
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2477796060607144944, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_Name
-      value: WienerDollar
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.3395698
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.194
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5211696455011788955, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 60c0f231aa47aeb4db7cc07d7cc1b2f5, type: 3}
 --- !u!1001 &4508234123963512855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1844,4 +1786,3 @@ SceneRoots:
   - {fileID: 687923238}
   - {fileID: 2129757380}
   - {fileID: 683119090}
-  - {fileID: 4218198668193494420}

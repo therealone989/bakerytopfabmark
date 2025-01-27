@@ -4,9 +4,10 @@ public class MoneyCollect : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private string collectAnimationTrigger = "Collect";
-    [SerializeField] public BoxCollider collider;
+    private BoxCollider collider;
 
-    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden berÅErt hat
+    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden ber¸hrt hat
+    private ItemSO itemData; // Referenz auf die Item-Daten
 
     private void Start()
     {
@@ -32,7 +33,6 @@ public class MoneyCollect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Player"))
         {
             CollectMoney();
@@ -47,12 +47,30 @@ public class MoneyCollect : MonoBehaviour
         }
     }
 
+    public void SetItemData(ItemSO itemData)
+    {
+        this.itemData = itemData; // Speichern der Item-Daten
+    }
+
     private void CollectMoney()
     {
+        if (itemData != null)
+        {
+            // Hier f¸gst du das Geld dem Spieler hinzu (durch den ItemSeller)
+            ItemSeller itemSeller = FindFirstObjectByType<ItemSeller>();
+            if (itemSeller != null)
+            {
+                itemSeller.SellItem(itemData); // F¸ge das Geld dem Spieler hinzu
+            }
+        }
+
+        // Animation auslˆsen
         if (animator != null)
         {
             animator.SetTrigger(collectAnimationTrigger);
         }
-        Destroy(gameObject, 1.0f); // Objekt nach 1 Sekunde zerstˆren
+
+        // Objekt nach 1 Sekunde zerstˆren
+        Destroy(gameObject, 1.0f);
     }
 }

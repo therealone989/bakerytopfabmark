@@ -1,18 +1,12 @@
-﻿using System.Collections;
+﻿using NUnit.Framework.Interfaces;
+using System.Collections;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    [SerializeField] private ItemSeller itemSeller;
     [SerializeField] public GameObject moneyPrefab;
     [SerializeField] public Transform moneyspawnPoint;
     [SerializeField] public float throwForce = 5f;
-    private InventoryManager iM;
-
-    private void Start()
-    {
-        iM = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,13 +23,10 @@ public class Customer : MonoBehaviour
 
             if (itemData != null)
             {
-                // Übergibt das Item zum Verkauf an den ItemSeller
-                itemSeller.SellItem(itemData);
-
                 // Zerstört das Objekt nach dem Verkauf
                 Destroy(collision.collider.gameObject);
 
-                StartCoroutine(ThrowMoneyWithDelay(2f));
+                StartCoroutine(ThrowMoneyWithDelay(2f, itemData));
             }
             else
             {
@@ -44,13 +35,20 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private IEnumerator ThrowMoneyWithDelay(float delay)
+    private IEnumerator ThrowMoneyWithDelay(float delay, ItemSO itemData)
     {
         yield return new WaitForSeconds(delay);
 
         if (moneyPrefab != null && moneyspawnPoint != null)
         {
             GameObject money = Instantiate(moneyPrefab, moneyspawnPoint.position, Quaternion.identity);
+
+            // Setze den Wert im MoneyCollect-Skript
+            MoneyCollect moneyCollect = money.GetComponent<MoneyCollect>();
+            if (moneyCollect != null)
+            {
+                moneyCollect.SetItemData(itemData); // Übergibt die Item-Daten an das MoneyCollect-Skript
+            }
 
             Rigidbody rb = money.GetComponent<Rigidbody>();
             if (rb != null)
