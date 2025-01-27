@@ -66,7 +66,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // WENN MEHR ANKOMMT ALS LIMIT ERLAUBT DANN 
         if(this.quantity >= maxNumberOfItems)
         {
-            Debug.Log("ItemSlot ist voll (übergebenene Menge = Maximal im Slot verfügbare Plätze)");
+            // ItemSlot ist voll (übergebenene Menge = Maximal im Slot verfügbare Plätze) 
             quantityText.text = maxNumberOfItems.ToString();
             quantityText.enabled = true;
             isFull = true;
@@ -113,6 +113,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void EmptySlot()
     {
+        Debug.Log("EMPTY");
         quantityText.enabled = false;
         itemImage.sprite = emptySprite;
 
@@ -125,7 +126,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (quantity <= 0) return; // Slot ist leer, nichts zu tun
 
-        Debug.Log("RECHTS");
         // Spawne das Item vor dem Spieler
         GameObject spawnedItem = SpawnItem();
 

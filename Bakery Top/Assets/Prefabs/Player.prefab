@@ -187,7 +187,7 @@ MonoBehaviour:
   minHoldDistance: 1
   maxHoldDistance: 3
   snapThreshold: 0.5
-  rotationSpeed: 50
+  rotationSpeed: 500
   playerCamera: {fileID: 0}
   cinemachineInputProvider: {fileID: 0}
 --- !u!114 &8219358230847278799
