@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSeller: {fileID: 300581051}
-  moneyPrefab: {fileID: 6303355795033253774, guid: d1da84fa61fe4064e8d29a968953e116, type: 3}
+  moneyPrefab: {fileID: 6552982200095195044, guid: 0cb08e2e20ca1794482540776e99c935, type: 3}
   moneyspawnPoint: {fileID: 293041475}
   throwForce: 5
 --- !u!1001 &2129757380
