@@ -7,12 +7,13 @@ public class MoneyCollect : MonoBehaviour
     [SerializeField] private string idleAnimationTrigger = "Idle";
     private BoxCollider collider;
 
-    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden ber・rt hat
+    private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden berührt hat
+    private bool hasBeenCollected = false; // Verhindert mehrfaches Sammeln
     private ItemSO itemData; // Referenz auf die Item-Daten
 
     private void Start()
     {
-        animator.enabled = false; // Animator standardm葹ig deaktivieren
+        animator.enabled = false; // Animator standardmäßig deaktivieren
         collider = GetComponent<BoxCollider>();
     }
 
@@ -22,7 +23,6 @@ public class MoneyCollect : MonoBehaviour
         {
             Debug.Log("HIT GROUND");
             hasHitGround = true;
-
 
             // Spawne das leere Objekt an der Position des Spielers
             GameObject emptyObject = new GameObject("MyEmptyObject");
@@ -34,9 +34,11 @@ public class MoneyCollect : MonoBehaviour
             collider.isTrigger = true;
         }
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (!hasBeenCollected && collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("HIT PLAYER");
+
+            hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
 
             collider.isTrigger = true;
             ActivateAnimator();
@@ -63,10 +65,10 @@ public class MoneyCollect : MonoBehaviour
             collider.isTrigger = true;
         }
 
-        if (other.CompareTag("Player"))
+        // Stelle sicher, dass das Geld nur einmal eingesammelt wird
+        if (!hasBeenCollected && other.CompareTag("Player"))
         {
             GameObject emptyObject = new GameObject("MyEmptyObject");
-            Debug.Log("HIT PLAYER");
 
             // Setze die Position des leeren Objekts auf die Position des Spielers
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -74,11 +76,12 @@ public class MoneyCollect : MonoBehaviour
 
             transform.parent = emptyObject.transform;
 
+            hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
+
             ActivateAnimator();
             CollectMoney();
         }
     }
-
 
     private void ActivateAnimator()
     {
@@ -97,22 +100,21 @@ public class MoneyCollect : MonoBehaviour
     {
         if (itemData != null)
         {
-            // Hier f・st du das Geld dem Spieler hinzu (durch den ItemSeller)
+            // Hier fügst du das Geld dem Spieler hinzu (durch den ItemSeller)
             ItemSeller itemSeller = FindFirstObjectByType<ItemSeller>();
             if (itemSeller != null)
             {
-                Debug.Log("Itemdata nix nul");
-                itemSeller.SellItem(itemData); // F・e das Geld dem Spieler hinzu
+                itemSeller.SellItem(itemData); // Füge das Geld dem Spieler hinzu
             }
         }
 
-        // Animation auslen
+        // Animation auslösen
         if (animator != null)
         {
             animator.SetTrigger(collectAnimationTrigger);
         }
 
-        // Objekt nach 1 Sekunde zersten
+        // Objekt nach 1 Sekunde zerstören
         Destroy(gameObject, 1.0f);
     }
 }
