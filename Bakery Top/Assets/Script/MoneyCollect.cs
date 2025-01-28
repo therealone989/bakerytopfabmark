@@ -49,9 +49,9 @@ public class MoneyCollect : MonoBehaviour
         {
             hasHitGround = true;
 
-            // Spawne das leere Objekt an der Position des Spielers
+            // Spawne das leere Objekt an der aktuellen Position des Geldes
             GameObject emptyObject = new GameObject("MyEmptyObject");
-            emptyObject.transform.position = this.transform.position; // Position des Spielers
+            emptyObject.transform.position = this.transform.position;
             transform.parent = emptyObject.transform;
 
             ActivateAnimator();
@@ -62,12 +62,19 @@ public class MoneyCollect : MonoBehaviour
         // Stelle sicher, dass das Geld nur einmal eingesammelt wird
         if (!hasBeenCollected && other.CompareTag("Player"))
         {
+            Debug.Log("Einsammeln durch Spieler");
+
+            // Erstelle das leere Objekt
             GameObject emptyObject = new GameObject("MyEmptyObject");
 
-            // Setze die Position des leeren Objekts auf die Position des Spielers
+            // Hole die Transform des Spielers
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            emptyObject.transform.position = playerTransform.position + new Vector3(0,0,-1.5f);
 
+            // Berechne die Position relativ zur Rotation und Position des Spielers
+            Vector3 relativePosition = playerTransform.TransformPoint(new Vector3(0, 0, 2.5f));
+            emptyObject.transform.position = relativePosition;
+
+            // Setze das Geld als Kind des leeren Objekts
             transform.parent = emptyObject.transform;
 
             hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
