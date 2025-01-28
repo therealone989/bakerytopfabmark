@@ -21,11 +21,13 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetButtonDown("Inventory") && menuActivated)
         {
             ToggleInventory(false);
+            DeselectAllSlots();
         }
         else if (Input.GetButtonDown("Inventory") && !menuActivated)
         {
             // Time.timeScale = 0;  // OPTIONAL -- STOPPT ZEIT BEI AKTIVEN MENÜ - Physics Stoppen auch, Animations können Fehler geben
             ToggleInventory(true);
+            DeselectAllSlots();
         }
     }
 

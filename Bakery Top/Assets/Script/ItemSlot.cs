@@ -6,30 +6,30 @@ using System;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
+    [Header("Item Daten")]
     // ====== ITEM DATEN ======= //
     public string itemName;
     public int quantity;
-    public Sprite itemSprite;
-    public Sprite itemDescriptionImageSprite;
-    public bool isFull;
-    public string itemDescription;
-    public Sprite emptySprite;
-
     [SerializeField] private int maxNumberOfItems;
-
-
-    // ====== ITEM SLOT ======= //
+    public Sprite itemSprite;
     [SerializeField] private TMP_Text quantityText;
     [SerializeField] private Image itemImage;
-    public GameObject selectedShader;
-    public bool thisItemSelected;
+    public bool isFull;
 
-
-    // ====== ITEM BESCHREIBUNG SLOT ======= //
+    // ====== ITEM DESCRIPTION SLOT ======= //
+    [Header("Item Description Daten")]
+    public Sprite itemDescriptionImageSprite;
+    public string itemDescription;
     public Image itemDescriptionImage;
     public TMP_Text ItemDescriptionNameText;
     public TMP_Text ItemDescriptionText;
 
+
+    // DEFAULT SPRITES
+    [Header("Defaults")]
+    public Sprite emptySprite;
+    public GameObject selectedShader;
+    public bool thisItemSelected;
 
     private InventoryManager inventoryManager;
 
@@ -116,18 +116,21 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     private void EmptySlot()
     {
-        Debug.Log("EMPTY");
 
+        // ITEMSLOT LEEREN
         itemImage.sprite = emptySprite;
         itemName = "";
         itemSprite = emptySprite;
         quantityText.enabled = false;
 
+        // DESCRIPTION LEEREN
+        itemDescriptionImage.sprite = emptySprite;
         itemDescriptionImageSprite = emptySprite;
+        ItemDescriptionNameText.text = "";
         ItemDescriptionText.text = "";
         itemDescription = "";
 
-        // Setze das Flag für 'isFull' zurück, falls nötig
+        // Nicht mehr voll, isfull = false
         isFull = false;
     }
 
@@ -149,6 +152,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         // Schließe das Inventar
         inventoryManager.ToggleInventory(false);
+
 
         // Übergib das gespawnte Item an den Grabber
         FindFirstObjectByType<Grabitem>().GrabObject(spawnedItem);
