@@ -36,7 +36,8 @@ public class MoneyCollect : MonoBehaviour
 
         if (!hasBeenCollected && collision.gameObject.CompareTag("Player"))
         {
-            hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
+            hasHitGround = true;
+            hasBeenCollected = false; // Stelle sicher, dass das Sammeln nur einmal erfolgt
             collider.isTrigger = true;
         }
     }
@@ -68,7 +69,7 @@ public class MoneyCollect : MonoBehaviour
 
             // Setze die Position des leeren Objekts auf die Position des Spielers
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            emptyObject.transform.position = playerTransform.position;
+            emptyObject.transform.position = playerTransform.position + new Vector3(0,0,-1.5f);
 
             transform.parent = emptyObject.transform;
 
@@ -94,6 +95,14 @@ public class MoneyCollect : MonoBehaviour
 
     private void CollectMoney()
     {
+
+        // Animation auslösen
+        if (animator != null)
+        {
+            animator.SetTrigger(collectAnimationTrigger);
+        }
+
+
         if (itemData != null)
         {
             // Hier fügst du das Geld dem Spieler hinzu (durch den ItemSeller)
@@ -104,11 +113,7 @@ public class MoneyCollect : MonoBehaviour
             }
         }
 
-        // Animation auslösen
-        if (animator != null)
-        {
-            animator.SetTrigger(collectAnimationTrigger);
-        }
+
 
         // Objekt nach 1 Sekunde zerstören
         Destroy(gameObject, 1.0f);
