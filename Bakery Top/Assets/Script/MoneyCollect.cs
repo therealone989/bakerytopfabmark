@@ -6,7 +6,6 @@ public class MoneyCollect : MonoBehaviour
     [SerializeField] private string collectAnimationTrigger = "Collect";
     [SerializeField] private string idleAnimationTrigger = "Idle";
     private BoxCollider collider;
-    private Rigidbody body;
 
     private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden ber・rt hat
     private ItemSO itemData; // Referenz auf die Item-Daten
@@ -15,17 +14,19 @@ public class MoneyCollect : MonoBehaviour
     {
         animator.enabled = false; // Animator standardm葹ig deaktivieren
         collider = GetComponent<BoxCollider>();
-        body = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!hasHitGround && collision.collider.CompareTag("Ground"))
         {
+            Debug.Log("HIT GROUND");
             hasHitGround = true;
 
+
+            // Spawne das leere Objekt an der Position des Spielers
             GameObject emptyObject = new GameObject("MyEmptyObject");
-            emptyObject.transform.position = this.transform.position;
+            emptyObject.transform.position = this.transform.position; // Position des Spielers
 
             transform.parent = emptyObject.transform;
 
@@ -35,9 +36,10 @@ public class MoneyCollect : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("HIT PLAYER");
+
             collider.isTrigger = true;
             ActivateAnimator();
-            PlayCollectAnimation();
             CollectMoney();
         }
     }
@@ -48,8 +50,12 @@ public class MoneyCollect : MonoBehaviour
         {
             hasHitGround = true;
 
+            // Hole die Position des Spielers (falls erforderlich)
+            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+            // Spawne das leere Objekt an der Position des Spielers
             GameObject emptyObject = new GameObject("MyEmptyObject");
-            emptyObject.transform.position = this.transform.position;
+            emptyObject.transform.position = playerTransform.position; // Position des Spielers
 
             transform.parent = emptyObject.transform;
 
@@ -59,18 +65,21 @@ public class MoneyCollect : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            GameObject emptyObject = new GameObject("MyEmptyObject");
+            Debug.Log("HIT PLAYER");
+
+            // Setze die Position des leeren Objekts auf die Position des Spielers
+            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            emptyObject.transform.position = playerTransform.position;
+
+            transform.parent = emptyObject.transform;
+
             ActivateAnimator();
-            PlayCollectAnimation();
             CollectMoney();
         }
     }
-    private void PlayCollectAnimation()
-    {
-        if (animator != null)
-        {
-            animator.SetTrigger("Collect"); // Setzt den Trigger für die Collect-Animation
-        }
-    }
+
+
     private void ActivateAnimator()
     {
         if (animator != null)
@@ -92,6 +101,7 @@ public class MoneyCollect : MonoBehaviour
             ItemSeller itemSeller = FindFirstObjectByType<ItemSeller>();
             if (itemSeller != null)
             {
+                Debug.Log("Itemdata nix nul");
                 itemSeller.SellItem(itemData); // F・e das Geld dem Spieler hinzu
             }
         }
