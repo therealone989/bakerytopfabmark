@@ -7,7 +7,6 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
-
     public ItemSO[] itemSOs;
 
     [Header("UI and Camera Settings")]
@@ -75,12 +74,23 @@ public class InventoryManager : MonoBehaviour
         Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isActive;
 
+        StopMovementInInventory(isActive);
+
+        if (!isActive)
+        {
+            ResetItemDescription();
+        }
+    }
+
+    private void StopMovementInInventory(bool isActive)
+    {
         if (mouseCanvas != null)
         {
             mouseCanvas.enabled = !isActive;
         }
 
-        if(playerMovement !=null) {
+        if (playerMovement != null)
+        {
             playerMovement.enabled = !isActive;
         }
 
@@ -89,11 +99,20 @@ public class InventoryManager : MonoBehaviour
             cineCam.SetActive(!isActive);
         }
 
-        if(grabItemScript !=null)
+        if (grabItemScript != null)
         {
             grabItemScript.enabled = !isActive;
         }
-
-
     }
+
+    // Reset der rechten Beschreibung (Bild, Name, Text)
+    private void ResetItemDescription()
+    {
+        foreach (var slot in itemSlot)
+        {
+            slot.ResetDescription();
+        }
+    }
+
+
 }

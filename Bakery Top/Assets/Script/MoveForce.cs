@@ -97,7 +97,6 @@ public class MoveForce : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        Debug.Log("JUMP");
     }
 
     private void RotatePlayerToCamera()

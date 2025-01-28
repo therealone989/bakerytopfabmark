@@ -36,7 +36,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
-        Debug.Log("ITEMSLOT SCRIPT");
     }
 
     public int AddItem(String itemName, int quantity, Sprite[] sprite, String itemDescription)
@@ -89,7 +88,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("LEFT ONPINERCLECK");
             OnLeftClick();
         }
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -100,7 +98,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-        Debug.Log("LEFT LCICKCKCKCKCK");
         inventoryManager.DeselectAllSlots();
         selectedShader.SetActive(true);
         thisItemSelected = true;
@@ -124,11 +121,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         quantityText.enabled = false;
 
         // DESCRIPTION LEEREN
-        itemDescriptionImage.sprite = emptySprite;
-        itemDescriptionImageSprite = emptySprite;
-        ItemDescriptionNameText.text = "";
-        ItemDescriptionText.text = "";
-        itemDescription = "";
+        ResetDescription();
 
         // Nicht mehr voll, isfull = false
         isFull = false;
@@ -175,6 +168,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Debug.LogError("Item prefab not found for: " + itemName);
             return null;
         }
+    }
+
+    public void ResetDescription()
+    {
+        selectedShader.SetActive(false);
+        thisItemSelected = false;
+
+        itemDescriptionImage.sprite = emptySprite;
+        ItemDescriptionNameText.text = "";
+        ItemDescriptionText.text = "";
+
     }
 
 

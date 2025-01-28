@@ -4,8 +4,7 @@ public class MoneyCollect : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private string collectAnimationTrigger = "Collect";
-    [SerializeField] private string idleAnimationTrigger = "Idle";
-    private BoxCollider collider;
+    private BoxCollider moneyCollider;
 
     private bool hasHitGround = false; // Kontrolliert, ob das Objekt den Boden berührt hat
     private bool hasBeenCollected = false; // Verhindert mehrfaches Sammeln
@@ -16,7 +15,7 @@ public class MoneyCollect : MonoBehaviour
     private void Start()
     {
         animator.enabled = false; // Animator standardmäßig deaktivieren
-        collider = GetComponent<BoxCollider>();
+        moneyCollider = GetComponent<BoxCollider>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -24,7 +23,6 @@ public class MoneyCollect : MonoBehaviour
     {
         if (!hasHitGround && collision.collider.CompareTag("Ground"))
         {
-            Debug.Log("HIT GROUND");
             hasHitGround = true;
 
             // Spawne das leere Objekt an der Position des Spielers
@@ -34,7 +32,7 @@ public class MoneyCollect : MonoBehaviour
             transform.parent = emptyObject.transform;
 
             ActivateAnimator();
-            collider.isTrigger = true;
+            moneyCollider.isTrigger = true;
 
 
         }
@@ -43,13 +41,12 @@ public class MoneyCollect : MonoBehaviour
         {
             hasHitGround = true;
             hasBeenCollected = false; // Stelle sicher, dass das Sammeln nur einmal erfolgt
-            collider.isTrigger = true;
+            moneyCollider.isTrigger = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGER AUSGELÖST");
         if (!hasHitGround && other.CompareTag("Ground"))
         {
             hasHitGround = true;
@@ -68,13 +65,12 @@ public class MoneyCollect : MonoBehaviour
             }
             ActivateAnimator();
             CollectMoney();
-            collider.isTrigger = true;
+            moneyCollider.isTrigger = true;
         }
 
         // Stelle sicher, dass das Geld nur einmal eingesammelt wird
         if (!hasBeenCollected && other.CompareTag("Player"))
         {
-            Debug.Log("Einsammeln durch Spieler");
 
             // Erstelle das leere Objekt
             GameObject emptyObject = new GameObject("MyEmptyObject");
