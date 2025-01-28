@@ -49,12 +49,9 @@ public class MoneyCollect : MonoBehaviour
         {
             hasHitGround = true;
 
-            // Hole die Position des Spielers (falls erforderlich)
-            Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-
             // Spawne das leere Objekt an der Position des Spielers
             GameObject emptyObject = new GameObject("MyEmptyObject");
-            emptyObject.transform.position = playerTransform.position; // Position des Spielers
+            emptyObject.transform.position = this.transform.position; // Position des Spielers
             transform.parent = emptyObject.transform;
 
             ActivateAnimator();
