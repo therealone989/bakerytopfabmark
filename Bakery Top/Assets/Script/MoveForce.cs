@@ -37,8 +37,7 @@ public class MoveForce : MonoBehaviour
         rb.freezeRotation = true;
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+        
         cameraTransform = Camera.main.transform;
     }
 
@@ -112,4 +111,6 @@ public class MoveForce : MonoBehaviour
             rb.MoveRotation(targetRotation);
         }
     }
+
+
 }

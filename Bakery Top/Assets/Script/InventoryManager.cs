@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -9,10 +10,16 @@ public class InventoryManager : MonoBehaviour
 
     public ItemSO[] itemSOs;
 
+    [Header("UI and Camera Settings")]
+    public Canvas mouseCanvas;
+    [SerializeField] private MonoBehaviour playerMovement;
+    [SerializeField] private GameObject cineCam;
+    [SerializeField] private Grabitem grabItemScript;
+
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -67,5 +74,26 @@ public class InventoryManager : MonoBehaviour
 
         Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isActive;
+
+        if (mouseCanvas != null)
+        {
+            mouseCanvas.enabled = !isActive;
+        }
+
+        if(playerMovement !=null) {
+            playerMovement.enabled = !isActive;
+        }
+
+        if (cineCam != null)
+        {
+            cineCam.SetActive(!isActive);
+        }
+
+        if(grabItemScript !=null)
+        {
+            grabItemScript.enabled = !isActive;
+        }
+
+
     }
 }

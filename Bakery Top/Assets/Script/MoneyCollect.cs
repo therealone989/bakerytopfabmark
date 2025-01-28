@@ -11,10 +11,13 @@ public class MoneyCollect : MonoBehaviour
     private bool hasBeenCollected = false; // Verhindert mehrfaches Sammeln
     private ItemSO itemData; // Referenz auf die Item-Daten
 
+    AudioSource audioSource;
+
     private void Start()
     {
         animator.enabled = false; // Animator standardmäßig deaktivieren
         collider = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,6 +35,8 @@ public class MoneyCollect : MonoBehaviour
 
             ActivateAnimator();
             collider.isTrigger = true;
+
+
         }
 
         if (!hasBeenCollected && collision.gameObject.CompareTag("Player"))
@@ -53,7 +58,14 @@ public class MoneyCollect : MonoBehaviour
             GameObject emptyObject = new GameObject("MyEmptyObject");
             emptyObject.transform.position = this.transform.position;
             transform.parent = emptyObject.transform;
-
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
             ActivateAnimator();
             CollectMoney();
             collider.isTrigger = true;
@@ -78,7 +90,14 @@ public class MoneyCollect : MonoBehaviour
             transform.parent = emptyObject.transform;
 
             hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
-
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
             ActivateAnimator();
             CollectMoney();
         }
