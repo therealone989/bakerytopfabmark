@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -7,13 +8,15 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
-    public ItemSO[] itemSOs;
 
     [Header("UI and Camera Settings")]
     public Canvas mouseCanvas;
     [SerializeField] private MonoBehaviour playerMovement;
     [SerializeField] private GameObject cineCam;
     [SerializeField] private Grabitem grabItemScript;
+
+    [SerializeField] public GameObject statsMenu;
+    [SerializeField] public Button nextMenuButton;
 
 
     void Start()
@@ -68,9 +71,11 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory(bool isActive)
     {
-        InventoryMenu.SetActive(isActive);
-        menuActivated = isActive;
 
+        InventoryMenu.SetActive(isActive);
+        statsMenu.SetActive(false);
+        menuActivated = isActive;
+        nextMenuButton.gameObject.SetActive(isActive);
         Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isActive;
 
@@ -114,5 +119,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void ToggleMenus()
+    {
+        if(InventoryMenu.gameObject.activeSelf)
+        {
+            InventoryMenu.gameObject.SetActive(false);
+            statsMenu.gameObject.SetActive(true);
+        } else if (statsMenu.gameObject.activeSelf)
+        {
+            InventoryMenu.gameObject.SetActive(true);
+            statsMenu.gameObject.SetActive(false);
+        }
+    }
 
 }
