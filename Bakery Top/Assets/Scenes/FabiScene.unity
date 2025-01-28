@@ -2095,18 +2095,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2111046500624877337, guid: 46b40eefffe6f874dad74b22fb295407, type: 3}
-      propertyPath: itemSprite.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2111046500624877337, guid: 46b40eefffe6f874dad74b22fb295407, type: 3}
-      propertyPath: 'itemSprite.Array.data[0]'
-      value: 
-      objectReference: {fileID: 21300000, guid: d6b58591f3e872043a5184e42d42bbaf, type: 3}
-    - target: {fileID: 2111046500624877337, guid: 46b40eefffe6f874dad74b22fb295407, type: 3}
-      propertyPath: 'itemSprite.Array.data[1]'
-      value: 
-      objectReference: {fileID: 21300000, guid: 86a3c9ca8a8142449a10528ca9a5e6db, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2227,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512665390092122383, guid: d1da84fa61fe4064e8d29a968953e116, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.377
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 4512665390092122383, guid: d1da84fa61fe4064e8d29a968953e116, type: 3}
       propertyPath: m_LocalPosition.z

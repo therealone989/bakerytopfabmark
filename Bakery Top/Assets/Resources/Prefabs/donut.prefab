@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 407ebad80a840ee40b746fb43796d9a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.735
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 407ebad80a840ee40b746fb43796d9a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.228
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 407ebad80a840ee40b746fb43796d9a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.639
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 407ebad80a840ee40b746fb43796d9a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Donut
   quantity: 1
-  itemSprite: []
+  itemSprite:
+  - {fileID: 21300000, guid: d6b58591f3e872043a5184e42d42bbaf, type: 3}
+  - {fileID: 21300000, guid: 86a3c9ca8a8142449a10528ca9a5e6db, type: 3}
   itemDescription: This is Donut
   itemData: {fileID: 11400000, guid: fe3dae204101aa84e880c807da0f0af3, type: 2}
