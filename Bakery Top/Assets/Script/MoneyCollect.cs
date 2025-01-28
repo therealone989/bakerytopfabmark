@@ -36,18 +36,14 @@ public class MoneyCollect : MonoBehaviour
 
         if (!hasBeenCollected && collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("HIT PLAYER");
-
             hasBeenCollected = true; // Stelle sicher, dass das Sammeln nur einmal erfolgt
-
             collider.isTrigger = true;
-            ActivateAnimator();
-            CollectMoney();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("TRIGGER AUSGELÖST");
         if (!hasHitGround && other.CompareTag("Ground"))
         {
             hasHitGround = true;
@@ -58,10 +54,10 @@ public class MoneyCollect : MonoBehaviour
             // Spawne das leere Objekt an der Position des Spielers
             GameObject emptyObject = new GameObject("MyEmptyObject");
             emptyObject.transform.position = playerTransform.position; // Position des Spielers
-
             transform.parent = emptyObject.transform;
 
             ActivateAnimator();
+            CollectMoney();
             collider.isTrigger = true;
         }
 
