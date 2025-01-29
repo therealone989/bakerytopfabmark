@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7106478009581535445
 Transform:
   m_ObjectHideFlags: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   jumpForce: 8
   groundCheck: {fileID: 6745693815944237970}
   groundDistance: 0.4
+  headTransform: {fileID: 0}
 --- !u!114 &8674481373680661481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightRange: 2
   playerCamera: {fileID: 0}
+  normalCursor: {fileID: 0}
+  highlightCursor: {fileID: 0}
+  cursorImage: {fileID: 0}
 --- !u!1 &6307659068276257515
 GameObject:
   m_ObjectHideFlags: 0

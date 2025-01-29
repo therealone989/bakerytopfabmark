@@ -10,6 +10,8 @@ public class MoneyCollect : MonoBehaviour
     private bool hasBeenCollected = false; // Verhindert mehrfaches Sammeln
     private ItemSO itemData; // Referenz auf die Item-Daten
 
+    [SerializeField] private GameObject playerObject;
+
     AudioSource audioSource;
 
     private void Start()
@@ -73,13 +75,14 @@ public class MoneyCollect : MonoBehaviour
         {
 
             // Erstelle das leere Objekt
-            GameObject emptyObject = new GameObject("MyEmptyObject");
+            GameObject emptyObject = new GameObject("MyEmptyObject2");
 
             // Hole die Transform des Spielers
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
             // Berechne die Position relativ zur Rotation und Position des Spielers
             Vector3 relativePosition = playerTransform.TransformPoint(new Vector3(0, 0, 2.5f));
+            
             emptyObject.transform.position = relativePosition;
 
             // Setze das Geld als Kind des leeren Objekts
