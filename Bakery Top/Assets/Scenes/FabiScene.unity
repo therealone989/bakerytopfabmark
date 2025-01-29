@@ -660,6 +660,22 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 330585545}
+    - target: {fileID: 8993962208095029641, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 4508234123963512856}
+    - target: {fileID: 8993962208095029641, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+      propertyPath: normalCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 018cdbcc01503d34db130bf112084670, type: 3}
+    - target: {fileID: 8993962208095029641, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 66876}
+    - target: {fileID: 8993962208095029641, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+      propertyPath: highlightCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f406379e74eeae4d8ef4b26aeffdbf0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2298,6 +2314,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+--- !u!114 &4508234123963512856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5085456609557164877, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+  m_PrefabInstance: {fileID: 4508234123963512855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8233844365829744688
 PrefabInstance:
   m_ObjectHideFlags: 0
