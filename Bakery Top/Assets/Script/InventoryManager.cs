@@ -19,10 +19,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] public Button nextMenuButton;
 
 
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
@@ -83,7 +80,8 @@ public class InventoryManager : MonoBehaviour
 
         if (!isActive)
         {
-            ResetItemDescription();
+            //ResetItemDescription();
+            DeselectAllSlots();
         }
     }
 

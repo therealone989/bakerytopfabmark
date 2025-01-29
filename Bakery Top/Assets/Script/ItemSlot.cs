@@ -42,7 +42,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
 
         // Check to see if the slot is already full
-        if(isFull)
+        if (isFull)
         {
             return quantity;
         }
@@ -64,13 +64,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         this.quantity += quantity;
 
         // WENN MEHR ANKOMMT ALS LIMIT ERLAUBT DANN 
-        if(this.quantity >= maxNumberOfItems)
+        if (this.quantity >= maxNumberOfItems)
         {
             // ItemSlot ist voll (・ergebenene Menge = Maximal im Slot verf・bare Pl舩ze) 
             quantityText.text = maxNumberOfItems.ToString();
             quantityText.enabled = true;
             isFull = true;
-        
+
             // RETURN LEFTOVERS
             int extraItems = this.quantity - maxNumberOfItems;
             this.quantity = maxNumberOfItems;
@@ -86,7 +86,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             OnLeftClick();
         }
@@ -105,7 +105,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         ItemDescriptionNameText.text = itemName;
         ItemDescriptionText.text = itemDescription;
         itemDescriptionImage.sprite = itemDescriptionImageSprite;
-        if(itemDescriptionImage.sprite == null)
+        if (itemDescriptionImage.sprite == null)
         {
             itemDescriptionImage.sprite = emptySprite;
         }
@@ -138,7 +138,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         quantity--;
         quantityText.text = quantity > 0 ? quantity.ToString() : "";
         isFull = quantity > 0;
-        if(this.quantity <= 0)
+        if (this.quantity <= 0)
         {
             EmptySlot();
         }
@@ -172,8 +172,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void ResetDescription()
     {
+        Debug.Log("REST");
         selectedShader.SetActive(false);
         thisItemSelected = false;
+
+        itemDescriptionImageSprite = null;
+        itemDescription = "";
 
         itemDescriptionImage.sprite = emptySprite;
         ItemDescriptionNameText.text = "";
