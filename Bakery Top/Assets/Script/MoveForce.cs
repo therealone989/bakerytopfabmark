@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveForce : MonoBehaviour
 {
@@ -33,6 +33,9 @@ public class MoveForce : MonoBehaviour
 
     [Header("Animation")]
     private Animator animator;
+    private bool isJumping = false;
+    [Header("Kopf-Rotation")]
+    public Transform headTransform;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,6 +61,7 @@ public class MoveForce : MonoBehaviour
 
         RotatePlayerToCamera();
         UpdateAnimation();
+        RotateHeadToCamera();
     }
 
     private void FixedUpdate()
@@ -101,6 +105,8 @@ public class MoveForce : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isJumping = true;
+        UpdateAnimation();
     }
 
     private void RotatePlayerToCamera()
@@ -124,6 +130,24 @@ public class MoveForce : MonoBehaviour
         // Setze die Animator-Parameter
         animator.SetFloat("Speed", speed);
         animator.SetBool("IsMoving", speed > 0.1f);
-    }
 
+        if (!grounded)
+        {
+            animator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+            isJumping = false; // Sicherstellen, dass das Flag zurückgesetzt wird
+        }
+    }
+    private void RotateHeadToCamera()
+    {
+        if (headTransform == null) return;
+
+        // NUR YAW und PITCH der Kamera übernehmen (keine Z-Drehung)
+        Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, headTransform.eulerAngles.z);
+
+        headTransform.rotation = targetRotation;
+    }
 }
