@@ -4,7 +4,7 @@ using Unity.Cinemachine; // Import für Cinemachine
 public class Grabitem : MonoBehaviour
 {
     [Header("Settings")]
-    public float grabRange = 2f;
+    public float grabRange = 3.5f;
     public float holdDistance = 1f;
     public float moveSpeed = 10f;
     public float throwForce = 500f;
@@ -18,7 +18,6 @@ public class Grabitem : MonoBehaviour
     public CinemachineInputAxisController cinemachineInputProvider;
 
     private Rigidbody grabbedObject;
-    private MeshRenderer grabbedObjectRenderer;
     private bool isRotating = false;
 
     void Update()
@@ -93,7 +92,6 @@ public class Grabitem : MonoBehaviour
             {
                 // Debug objectgname
                 grabbedObject = rb;
-                grabbedObjectRenderer = hit.collider.GetComponent<MeshRenderer>();
                 grabbedObject.useGravity = false;
                 grabbedObject.linearDamping = 10f;
                 grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
@@ -109,7 +107,6 @@ public class Grabitem : MonoBehaviour
             grabbedObject.linearDamping = 1f;
             grabbedObject.AddForce(playerCamera.forward * throwForce);
             grabbedObject = null;
-            grabbedObjectRenderer = null;
         }
     }
 
@@ -121,7 +118,6 @@ public class Grabitem : MonoBehaviour
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
             grabbedObject = null;
-            grabbedObjectRenderer = null;
         }
     }
 
@@ -178,7 +174,6 @@ public class Grabitem : MonoBehaviour
         if (rb != null)
         {
             grabbedObject = rb;
-            grabbedObjectRenderer = item.GetComponent<MeshRenderer>();
             grabbedObject.useGravity = false;
             grabbedObject.linearDamping = 10f;
             grabbedObject.interpolation = RigidbodyInterpolation.Interpolate;
