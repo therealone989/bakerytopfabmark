@@ -592,6 +592,17 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &364868312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7973882106981261051, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+  m_PrefabInstance: {fileID: 4508234123963512855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &368279152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1384,7 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe542e7c355aba4fba56e3964a90c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: {fileID: 0}
+  counter: {fileID: 364868312}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,10 +2224,6 @@ PrefabInstance:
       propertyPath: grabItemScript
       value: 
       objectReference: {fileID: 1284449299}
-    - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3115998631277117458, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
