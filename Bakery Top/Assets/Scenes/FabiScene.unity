@@ -611,14 +611,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 327389476531104235, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 327389476531104235, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.21
-      objectReference: {fileID: 0}
     - target: {fileID: 4585559333385558449, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
       propertyPath: playerCamera
       value: 
@@ -627,6 +619,10 @@ PrefabInstance:
       propertyPath: cinemachineInputProvider
       value: 
       objectReference: {fileID: 66879}
+    - target: {fileID: 6981975707184372257, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+      propertyPath: headRB
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6981975707184372257, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -1510,6 +1506,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2df1f6fc7b02fa40b15f79d91d86f2c, type: 3}
+--- !u!114 &1408568935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6981975707184372257, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+  m_PrefabInstance: {fileID: 368279152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49b135e35d9b83439aad9b786d72fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1408568936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4585559333385558449, guid: f22e8cf5bec6b3b43a17889f45cbed36, type: 3}
+  m_PrefabInstance: {fileID: 368279152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b255ad18bb9724fab6c93e0c531607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1412650647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2143,7 +2161,11 @@ PrefabInstance:
     - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: grabItemScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1408568936}
+    - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1408568935}
     - target: {fileID: 3115998631277117458, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas

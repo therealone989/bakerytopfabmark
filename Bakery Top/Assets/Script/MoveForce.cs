@@ -22,6 +22,7 @@ public class MoveForce : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    [SerializeField] Rigidbody headRB;
 
     [Header("Camera Settings")]
     [SerializeField] Transform cameraTransform;

@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("UI and Camera Settings")]
     public Canvas mouseCanvas;
-    [SerializeField] private MonoBehaviour playerMovement;
+    [SerializeField] private MoveForce playerMovement;
     [SerializeField] private GameObject cineCam;
     [SerializeField] private Grabitem grabItemScript;
 

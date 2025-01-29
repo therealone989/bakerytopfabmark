@@ -264,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6526586816445515397}
   - component: {fileID: 646190939880028659}
+  - component: {fileID: 3228920091198219673}
   m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
@@ -348,6 +349,33 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.02302599, y: 1.6196765, z: -0.1266694}
     m_Extent: {x: 0.8779696, y: 1.1639463, z: 0.8824196}
   m_DirtyAABB: 0
+--- !u!54 &3228920091198219673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940744739287768888}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &2239234470162281263
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 3069436330265831469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.675, z: -0.191}
+  m_LocalPosition: {x: 0, y: 3.98, z: 0.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1338,6 +1366,7 @@ MonoBehaviour:
     m_Bits: 8
   grounded: 0
   orientation: {fileID: 327389476531104235}
+  headRB: {fileID: 0}
   cameraTransform: {fileID: 0}
   jumpForce: 8
   groundCheck: {fileID: 7293034214244004131}
