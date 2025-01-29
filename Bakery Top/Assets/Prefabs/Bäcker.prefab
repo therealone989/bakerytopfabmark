@@ -254,12 +254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b255ad18bb9724fab6c93e0c531607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 2.5
+  grabRange: 3
   holdDistance: 1
   moveSpeed: 10
   throwForce: 500
-  minHoldDistance: 1
-  maxHoldDistance: 3
+  minHoldDistance: 3
+  maxHoldDistance: 4
   snapThreshold: 0.5
   rotationSpeed: 500
   playerCamera: {fileID: 0}
