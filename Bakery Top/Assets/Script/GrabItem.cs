@@ -80,7 +80,7 @@ public class Grabitem : MonoBehaviour
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
             if (rb != null && hit.collider.CompareTag("Grabbable"))
             {
-                Debug.Log(rb.gameObject.name);
+                // Debug objectgname
                 grabbedObject = rb;
                 grabbedObjectRenderer = hit.collider.GetComponent<MeshRenderer>();
                 grabbedObject.useGravity = false;

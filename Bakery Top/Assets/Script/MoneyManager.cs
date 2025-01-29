@@ -1,16 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
     private int playerMoney;
-
+    [SerializeField] private TMP_Text counter;
 
     public int PlayerMoney => playerMoney;
+
 
 
     public void AddMoney(int amount)
     {
         playerMoney += amount;
+        counter.text = playerMoney.ToString();
         Debug.Log($"Geld hinzugefügt: {amount}. Aktueller Kontostand: {playerMoney}");
     }
 

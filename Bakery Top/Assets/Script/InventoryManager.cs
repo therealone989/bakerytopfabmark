@@ -1,4 +1,6 @@
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -7,12 +9,19 @@ public class InventoryManager : MonoBehaviour
     private bool menuActivated;
     public ItemSlot[] itemSlot;
 
-    public ItemSO[] itemSOs;
+    [Header("UI and Camera Settings")]
+    public Canvas mouseCanvas;
+    [SerializeField] private MonoBehaviour playerMovement;
+    [SerializeField] private GameObject cineCam;
+    [SerializeField] private Grabitem grabItemScript;
+
+    [SerializeField] public GameObject statsMenu;
+    [SerializeField] public Button nextMenuButton;
 
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -62,10 +71,65 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory(bool isActive)
     {
-        InventoryMenu.SetActive(isActive);
-        menuActivated = isActive;
 
+        InventoryMenu.SetActive(isActive);
+        statsMenu.SetActive(false);
+        menuActivated = isActive;
+        nextMenuButton.gameObject.SetActive(isActive);
         Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isActive;
+
+        StopMovementInInventory(isActive);
+
+        if (!isActive)
+        {
+            ResetItemDescription();
+        }
     }
+
+    private void StopMovementInInventory(bool isActive)
+    {
+        if (mouseCanvas != null)
+        {
+            mouseCanvas.enabled = !isActive;
+        }
+
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = !isActive;
+        }
+
+        if (cineCam != null)
+        {
+            cineCam.SetActive(!isActive);
+        }
+
+        if (grabItemScript != null)
+        {
+            grabItemScript.enabled = !isActive;
+        }
+    }
+
+    // Reset der rechten Beschreibung (Bild, Name, Text)
+    private void ResetItemDescription()
+    {
+        foreach (var slot in itemSlot)
+        {
+            slot.ResetDescription();
+        }
+    }
+
+    public void ToggleMenus()
+    {
+        if(InventoryMenu.gameObject.activeSelf)
+        {
+            InventoryMenu.gameObject.SetActive(false);
+            statsMenu.gameObject.SetActive(true);
+        } else if (statsMenu.gameObject.activeSelf)
+        {
+            InventoryMenu.gameObject.SetActive(true);
+            statsMenu.gameObject.SetActive(false);
+        }
+    }
+
 }

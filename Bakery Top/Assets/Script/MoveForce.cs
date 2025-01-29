@@ -39,8 +39,7 @@ public class MoveForce : MonoBehaviour
         rb.freezeRotation = true;
 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+        
         cameraTransform = Camera.main.transform;
 
         animator = GetComponent<Animator>();
@@ -102,7 +101,6 @@ public class MoveForce : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        Debug.Log("JUMP");
     }
 
     private void RotatePlayerToCamera()
@@ -127,4 +125,5 @@ public class MoveForce : MonoBehaviour
         animator.SetFloat("Speed", speed);
         animator.SetBool("IsMoving", speed > 0.1f);
     }
+
 }
