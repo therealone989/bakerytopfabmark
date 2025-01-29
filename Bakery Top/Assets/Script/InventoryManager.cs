@@ -24,7 +24,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Sprite emptySprite;
 
-
+    public bool isInInventory = false;
 
 
     // Update is called once per frame
@@ -34,12 +34,14 @@ public class InventoryManager : MonoBehaviour
         {
             ToggleInventory(false);
             DeselectAllSlots();
+            isInInventory = true;
         }
         else if (Input.GetButtonDown("Inventory") && !menuActivated)
         {
             // Time.timeScale = 0;  // OPTIONAL -- STOPPT ZEIT BEI AKTIVEN MENÜ - Physics Stoppen auch, Animations können Fehler geben
             ToggleInventory(true);
             DeselectAllSlots();
+            isInInventory = false;
         }
     }
 
@@ -104,7 +106,24 @@ public class InventoryManager : MonoBehaviour
 
         if (playerMovement != null)
         {
-            playerMovement.enabled = !isActive;
+            //playerMovement.enabled = !isActive;
+
+            // **Physik stoppen, wenn das Inventar aktiv ist**
+            Rigidbody rb = playerMovement.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                if (isActive)
+                {
+                    playerMovement.speed = 0f;
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    rb.isKinematic = true; // **Blockiert alle weiteren Bewegungen**
+                }
+                else
+                {
+                    rb.isKinematic = false; // **Physik wieder aktivieren**
+                }
+            }
         }
 
         if (cineCam != null)

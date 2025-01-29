@@ -5,8 +5,8 @@ public class MoveForce : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float sprintSpeed;
-    private float currentSpeed;
-
+    public float currentSpeed;
+    public float speed;
     public float groundDrag;
 
     [Header("Ground Check")]
@@ -22,7 +22,6 @@ public class MoveForce : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
-    [SerializeField] Rigidbody headRB;
 
     [Header("Camera Settings")]
     [SerializeField] Transform cameraTransform;
@@ -37,6 +36,9 @@ public class MoveForce : MonoBehaviour
     private bool isJumping = false;
     [Header("Kopf-Rotation")]
     public Transform headTransform;
+
+    [Header("Inventory")]
+    public InventoryManager inventoryManager;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,6 +49,7 @@ public class MoveForce : MonoBehaviour
         cameraTransform = Camera.main.transform;
 
         animator = GetComponent<Animator>();
+        inventoryManager = GetComponent<InventoryManager>();
     }
 
     private void Update()
@@ -63,6 +66,7 @@ public class MoveForce : MonoBehaviour
         RotatePlayerToCamera();
         UpdateAnimation();
         //RotateHeadToCamera();
+        Debug.Log(currentSpeed);
     }
 
     private void FixedUpdate()
@@ -126,12 +130,11 @@ public class MoveForce : MonoBehaviour
         if (animator == null) return;
 
         // Berechne die Geschwindigkeit
-        float speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+        speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
 
         // Setze die Animator-Parameter
         animator.SetFloat("Speed", speed);
         animator.SetBool("IsMoving", speed > 0.1f);
-
         if (!grounded)
         {
             animator.SetBool("IsJumping", true);

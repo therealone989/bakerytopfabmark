@@ -833,6 +833,17 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &460244822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+  m_PrefabInstance: {fileID: 4508234123963512855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33cc6dc7956e6d49a397f7fc44b46cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &528877423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2075,7 @@ PrefabInstance:
     - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: playerMovement
       value: 
-      objectReference: {fileID: 3031093040010500135}
+      objectReference: {fileID: 5510948525033809221}
     - target: {fileID: 3115998631277117458, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
@@ -2154,6 +2165,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+--- !u!114 &4508234123963512856 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5085456609557164877, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+  m_PrefabInstance: {fileID: 4508234123963512855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5510948525033809221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7894514403706598223, guid: 21e2fe22f9ed41c4697d8345dc9241dc, type: 3}
+  m_PrefabInstance: {fileID: 6689857012806081145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49b135e35d9b83439aad9b786d72fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6689857012806081145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2222,6 +2255,14 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 66876}
+    - target: {fileID: 7894514403706598223, guid: 21e2fe22f9ed41c4697d8345dc9241dc, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 460244822}
+    - target: {fileID: 8222514859715451701, guid: 21e2fe22f9ed41c4697d8345dc9241dc, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 4508234123963512856}
     - target: {fileID: 8222514859715451701, guid: 21e2fe22f9ed41c4697d8345dc9241dc, type: 3}
       propertyPath: playerCamera
       value: 
