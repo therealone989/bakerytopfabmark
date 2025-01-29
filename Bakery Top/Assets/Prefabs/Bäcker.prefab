@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b255ad18bb9724fab6c93e0c531607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabRange: 2
+  grabRange: 2.5
   holdDistance: 1
   moveSpeed: 10
   throwForce: 500
@@ -278,6 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   sprintSpeed: 12
+  currentSpeed: 0
+  speed: 0
   groundDrag: 5
   playerHeight: 1
   whatIsGround:
@@ -285,12 +287,12 @@ MonoBehaviour:
     m_Bits: 8
   grounded: 0
   orientation: {fileID: 3741623528302908719}
-  headRB: {fileID: 0}
   cameraTransform: {fileID: 0}
   jumpForce: 8
   groundCheck: {fileID: 508545189323910392}
   groundDistance: 0.4
   headTransform: {fileID: 3741623528302908719}
+  inventoryManager: {fileID: 0}
 --- !u!114 &8222514859715451701
 MonoBehaviour:
   m_ObjectHideFlags: 0
