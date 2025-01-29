@@ -31,6 +31,8 @@ public class MoveForce : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
 
+    [Header("Animation")]
+    private Animator animator;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,6 +42,8 @@ public class MoveForce : MonoBehaviour
         Cursor.visible = false;
 
         cameraTransform = Camera.main.transform;
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -54,7 +58,7 @@ public class MoveForce : MonoBehaviour
         }
 
         RotatePlayerToCamera();
-
+        UpdateAnimation();
     }
 
     private void FixedUpdate()
@@ -111,5 +115,16 @@ public class MoveForce : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
             rb.MoveRotation(targetRotation);
         }
+    }
+    private void UpdateAnimation()
+    {
+        if (animator == null) return;
+
+        // Berechne die Geschwindigkeit
+        float speed = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+
+        // Setze die Animator-Parameter
+        animator.SetFloat("Speed", speed);
+        animator.SetBool("IsMoving", speed > 0.1f);
     }
 }
