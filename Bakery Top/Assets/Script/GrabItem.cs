@@ -23,7 +23,7 @@ public class Grabitem : MonoBehaviour
 
     void Update()
     {
-        HandleItemPickup(); // Hinzugefügt
+        HandleRayCast(); // Hinzugefügt
 
 
         if (Input.GetMouseButtonDown(0))
@@ -51,7 +51,7 @@ public class Grabitem : MonoBehaviour
         }
     }
 
-    private void HandleItemPickup()
+    private void HandleRayCast()
     {
         // Raycast aus der Kamera, um zu prüfen, ob ein Item im Blickfeld ist
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
@@ -65,6 +65,17 @@ public class Grabitem : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     item.PickUp(); // Methode im Item-Skript
+                }
+            }
+
+            if (hit.collider.CompareTag("Oven"))
+            {
+                Oven oven = hit.collider.GetComponent<Oven>();
+                Debug.Log("GUCKT AUF OVEN");
+                if (oven != null && Input.GetKeyDown(KeyCode.F))
+                {
+                    oven.StartBaking();
+                    return; // Keine weiteren Checks nötig
                 }
             }
         }
