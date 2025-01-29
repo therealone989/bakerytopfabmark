@@ -61,7 +61,7 @@ public class MoveForce : MonoBehaviour
 
         RotatePlayerToCamera();
         UpdateAnimation();
-        RotateHeadToCamera();
+        //RotateHeadToCamera();
     }
 
     private void FixedUpdate()
