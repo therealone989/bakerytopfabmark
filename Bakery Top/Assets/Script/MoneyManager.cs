@@ -14,7 +14,6 @@ public class MoneyManager : MonoBehaviour
     {
         playerMoney += amount;
         counter.text = playerMoney.ToString();
-        Debug.Log($"Geld hinzugefügt: {amount}. Aktueller Kontostand: {playerMoney}");
     }
 
     public bool SpendMoney(int amount)
