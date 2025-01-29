@@ -597,6 +597,17 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &349395203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9087575412123503451, guid: cf43a419ec8fa934c93db66cae705763, type: 3}
+  m_PrefabInstance: {fileID: 1418057070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b457de1395cf24ba8871a7699e73e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384190412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe542e7c355aba4fba56e3964a90c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counter: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1426,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2df1f6fc7b02fa40b15f79d91d86f2c, type: 3}
+--- !u!114 &1284449299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8674481373680661481, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+  m_PrefabInstance: {fileID: 1290840518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b255ad18bb9724fab6c93e0c531607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1290840518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1491,6 +1514,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1205996228234b34b9847f664b2a7669, type: 3}
+--- !u!114 &1369715278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5085456609557164877, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+  m_PrefabInstance: {fileID: 4508234123963512855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1412650647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1689,9 +1723,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 66879}
     - target: {fileID: 9087575412123503451, guid: cf43a419ec8fa934c93db66cae705763, type: 3}
+      propertyPath: cursorImage
+      value: 
+      objectReference: {fileID: 1369715278}
+    - target: {fileID: 9087575412123503451, guid: cf43a419ec8fa934c93db66cae705763, type: 3}
+      propertyPath: normalCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 018cdbcc01503d34db130bf112084670, type: 3}
+    - target: {fileID: 9087575412123503451, guid: cf43a419ec8fa934c93db66cae705763, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 66876}
+    - target: {fileID: 9087575412123503451, guid: cf43a419ec8fa934c93db66cae705763, type: 3}
+      propertyPath: highlightCursor
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f406379e74eeae4d8ef4b26aeffdbf0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2253,13 +2299,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+      propertyPath: cineCam
+      value: 
+      objectReference: {fileID: 66874}
+    - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+      propertyPath: grabItemScript
+      value: 
+      objectReference: {fileID: 1284449299}
+    - target: {fileID: 2045132020731263724, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 349395203}
     - target: {fileID: 3115998631277117458, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521455123788568903, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
-      propertyPath: m_Name
-      value: ItemDescriptionImage
       objectReference: {fileID: 0}
     - target: {fileID: 5545445396485544892, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
       propertyPath: m_Pivot.x
