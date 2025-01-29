@@ -5,11 +5,10 @@ public class CameraLayerMask : MonoBehaviour
     [Header("Layer zum Ausblenden")]
     [SerializeField] private string layerToHide;
 
-    private Camera cam;
+    public Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cam = GetComponent<Camera>();
 
         if(cam == null)
         {
