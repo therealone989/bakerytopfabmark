@@ -4,7 +4,7 @@ public class Item : MonoBehaviour
 {
 
     [SerializeField]
-    private string itemName;
+    public string itemName;
 
     [SerializeField]
     private int quantity;
