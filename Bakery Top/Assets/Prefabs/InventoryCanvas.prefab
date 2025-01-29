@@ -988,6 +988,10 @@ MonoBehaviour:
   grabItemScript: {fileID: 0}
   statsMenu: {fileID: 7444285820924511284}
   nextMenuButton: {fileID: 8866226180604458216}
+  itemDescriptionImage: {fileID: 438766569211552805}
+  ItemDescriptionNameText: {fileID: 4627326146491226558}
+  ItemDescriptionText: {fileID: 1621163820573491451}
+  emptySprite: {fileID: 21300000, guid: 927585be2b3b7fc4aabac9a29203b99a, type: 3}
 --- !u!1 &4082376241274581065
 GameObject:
   m_ObjectHideFlags: 0

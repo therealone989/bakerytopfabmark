@@ -13,6 +13,8 @@ public class ShowItemHighlight : MonoBehaviour
     [SerializeField] Sprite highlightCursor;
     [SerializeField] Image cursorImage;
 
+
+
     void Update()
     {
         HandleHighlight();

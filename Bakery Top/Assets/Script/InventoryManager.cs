@@ -1,4 +1,4 @@
-using Unity.Cinemachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +17,12 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] public GameObject statsMenu;
     [SerializeField] public Button nextMenuButton;
+
+    [SerializeField] public Image itemDescriptionImage;
+    [SerializeField] public TMP_Text ItemDescriptionNameText;
+    [SerializeField] public TMP_Text ItemDescriptionText;
+
+    [SerializeField] private Sprite emptySprite;
 
 
 
@@ -64,6 +70,10 @@ public class InventoryManager : MonoBehaviour
             itemSlot[i].selectedShader.SetActive(false);
             itemSlot[i].thisItemSelected = false;
         }
+
+        itemDescriptionImage.sprite = emptySprite;
+        ItemDescriptionNameText.text = "";
+        ItemDescriptionText.text = "";
     }
 
     public void ToggleInventory(bool isActive)
@@ -80,7 +90,7 @@ public class InventoryManager : MonoBehaviour
 
         if (!isActive)
         {
-            //ResetItemDescription();
+            
             DeselectAllSlots();
         }
     }
