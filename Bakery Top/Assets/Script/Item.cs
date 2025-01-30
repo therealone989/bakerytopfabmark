@@ -45,10 +45,10 @@ public class Item : MonoBehaviour, IInteractable
         PickUp();
     }
 
-    // Text für UI-Anzeige
+    // Text fE UI-Anzeige
     public string GetInteractText()
     {
-        return $"Drücke [E], um {itemName} aufzuheben";
+        return $"DrEke [E], um {itemName} aufzuheben";
     }
 
     public string GetItemName()
