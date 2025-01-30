@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7027393124688112312}
   - component: {fileID: 6407751926079978024}
   - component: {fileID: 1913274592069220220}
+  - component: {fileID: 906639725998171089}
   m_Layer: 0
   m_Name: Ofen
   m_TagString: Untagged
@@ -151,6 +152,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4033632, y: 2.6603556, z: 2.669736}
   m_Center: {x: 0.12663794, y: 3.8953986, z: 0.018760681}
+--- !u!114 &906639725998171089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106411869998658610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badccba0d5c6a4d40a5793ca792a0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovenDoorAnimator: {fileID: 6851184144632399350}
+  firewoodDoorAnimator: {fileID: 1529900490734025196}
+  firewoodSlots: []
+  doughSlots: []
+  fireEffect: {fileID: 0}
+  bakedBreadPrefab: {fileID: 0}
+  bakingTime: 2
 --- !u!1 &1031956405197082036
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,9 +270,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6908229086607397664}
   - component: {fileID: 8003456958041654543}
+  - component: {fileID: 6851184144632399350}
   m_Layer: 0
   m_Name: "ObereT\xFCr"
-  m_TagString: Untagged
+  m_TagString: OvenDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,6 +315,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1665945, y: 1.6178703, z: 2.2070012}
   m_Center: {x: 0.12213659, y: 0.8477752, z: 0.007184744}
+--- !u!95 &6851184144632399350
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6106515758823656831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 421089e9e45293143a9d6e202ae0358b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7239293366834029980
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +351,7 @@ GameObject:
   - component: {fileID: 2235534153755597280}
   m_Layer: 0
   m_Name: Cube.005
-  m_TagString: Untagged
+  m_TagString: FirewoodDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,7 +404,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 6382803366334160304, guid: eadcc2b235ee0cb46ba3917e525a9bb1, type: 3}
   - {fileID: 1036015588506349641, guid: eadcc2b235ee0cb46ba3917e525a9bb1, type: 3}
-  - {fileID: 8556262120643298411, guid: eadcc2b235ee0cb46ba3917e525a9bb1, type: 3}
+  - {fileID: 2100000, guid: b41f32a9ffdcef54684c0736e377327d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,9 +566,10 @@ GameObject:
   - component: {fileID: 8019231329017756322}
   - component: {fileID: 8559986820709561953}
   - component: {fileID: 5775659871303159468}
+  - component: {fileID: 6921271980892201734}
   m_Layer: 0
   m_Name: Cube.006
-  m_TagString: Untagged
+  m_TagString: OvenDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538,13 +582,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8375612755688172039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.010952592, y: 0.0046257973, z: 0}
+  m_LocalRotation: {x: -0.70762086, y: 0.00025930745, z: -0.0000061428873, w: 0.7065923}
+  m_LocalPosition: {x: 0.01065582, y: 0.004627228, z: 0.0011517451}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6908229086607397664}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.916, y: 0, z: -0.001}
 --- !u!33 &8559986820709561953
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -600,6 +644,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &6921271980892201734
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375612755688172039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf833016db319c94c85a3a9682bf60dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9000449249989653285
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,9 +676,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5343610136312465750}
   - component: {fileID: 5001051502582761226}
+  - component: {fileID: 1529900490734025196}
   m_Layer: 0
   m_Name: "UntereT\xFCr"
-  m_TagString: Untagged
+  m_TagString: FirewoodDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -641,3 +708,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9000449249989653285}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1529900490734025196
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9000449249989653285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 504e29c5b6aba9648b1471b7bd45bd79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

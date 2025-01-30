@@ -289,33 +289,6 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
---- !u!1 &128520787 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8375612755688172039, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-  m_PrefabInstance: {fileID: 2667248975143703990}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &128520791
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128520787}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cf833016db319c94c85a3a9682bf60dd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &227976721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -619,33 +592,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!1 &331256114 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9000449249989653285, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-  m_PrefabInstance: {fileID: 2667248975143703990}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &331256117
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331256114}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 504e29c5b6aba9648b1471b7bd45bd79, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &364868312 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7973882106981261051, guid: d28d1cbbaa09c6f489656ec5aab76a88, type: 3}
@@ -898,30 +844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33cc6dc7956e6d49a397f7fc44b46cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &498743017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 106411869998658610, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-  m_PrefabInstance: {fileID: 2667248975143703990}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &498743024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498743017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badccba0d5c6a4d40a5793ca792a0481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ovenDoorAnimator: {fileID: 1183098690}
-  firewoodDoorAnimator: {fileID: 331256117}
-  firewoodSlots: []
-  doughSlots: []
-  fireEffect: {fileID: 0}
-  bakedBreadPrefab: {fileID: 0}
-  bakingTime: 2
 --- !u!1 &528877423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,33 +1432,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2df1f6fc7b02fa40b15f79d91d86f2c, type: 3}
---- !u!1 &1183098687 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6106515758823656831, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-  m_PrefabInstance: {fileID: 2667248975143703990}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1183098690
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183098687}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 421089e9e45293143a9d6e202ae0358b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1412650647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2202,78 +2097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6106515758823656831, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_TagString
-      value: OvenDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 7239293366834029980, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_TagString
-      value: FirewoodDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 7734375442508677328, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b41f32a9ffdcef54684c0736e377327d, type: 2}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.01065582
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.004627228
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0011517451
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7065923
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.70762086
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.00025930745
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0000061428873
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.916
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019231329017756322, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8375612755688172039, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_TagString
-      value: OvenDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 9000449249989653285, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_TagString
-      value: FirewoodDoor
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 106411869998658610, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 498743024}
-    - targetCorrespondingSourceObject: {fileID: 9000449249989653285, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 331256117}
-    - targetCorrespondingSourceObject: {fileID: 6106515758823656831, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1183098690}
-    - targetCorrespondingSourceObject: {fileID: 8375612755688172039, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 128520791}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
 --- !u!114 &3031093040010500135 stripped
 MonoBehaviour:
