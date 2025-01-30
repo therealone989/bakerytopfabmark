@@ -53,7 +53,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public string GetItemName()
     {
-        return itemData != null ? itemData.itemName : itemName;
+        return this.itemName;
     }
 
     public ItemSO GetItemData()

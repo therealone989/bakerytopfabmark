@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Baum : MonoBehaviour, IInteractable
@@ -7,16 +8,19 @@ public class Baum : MonoBehaviour, IInteractable
     public GameObject woodPrefab;
     public Transform spawnPoint;
     public float spawnForce = 5f;
+    private bool canChop = false;
+    public float chopCooldown = 1f;
 
 
     public string GetInteractText()
     {
-        return "Schlage den Baum mit der axt! (Linksclick)";
+        return canChop ? "Schlage den Baum mit der axt! (Linksclick)" : "Warte noch ein Moment bis du schlagen kannst!";
     }
 
     public void Interact()
     {
         SpawnWood();
+        StartCoroutine(ChopCooldown());
     }
 
     private void SpawnWood()
@@ -44,5 +48,12 @@ public class Baum : MonoBehaviour, IInteractable
         {
             Debug.LogWarning("woodPrefab oder spawnPoint fehlt im Baum-Skript!");
         }
+    }
+
+    private IEnumerator ChopCooldown()
+    {
+        canChop = false;
+        yield return new WaitForSeconds(chopCooldown);
+        canChop = true;
     }
 }
