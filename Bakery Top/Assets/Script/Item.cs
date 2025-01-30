@@ -27,7 +27,6 @@ public class Item : MonoBehaviour
 
     public void PickUp()
     {
-
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite, itemDescription);
         if(leftOverItems <= 0)
         {
@@ -39,7 +38,6 @@ public class Item : MonoBehaviour
             quantity = leftOverItems;
             
         }
-
     }
 
     public string GetItemName()
