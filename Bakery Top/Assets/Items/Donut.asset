@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6c13be543663946bb79ee6f405cfb5, type: 3}
   m_Name: Donut
   m_EditorClassIdentifier: 
-  itenName: Donut
+  itemName: Donut
   statToChange: 2
   amountToChangeStat: 15
   attributeToChange: 1
