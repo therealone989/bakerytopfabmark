@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
 
     [SerializeField]
@@ -38,6 +38,17 @@ public class Item : MonoBehaviour
             quantity = leftOverItems;
             
         }
+    }
+
+    public void Interact()
+    {
+        PickUp();
+    }
+
+    // Text für UI-Anzeige
+    public string GetInteractText()
+    {
+        return $"Drücke [E], um {itemName} aufzuheben";
     }
 
     public string GetItemName()

@@ -56,27 +56,20 @@ public class Grabitem : MonoBehaviour
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
         {
-            // Prüfen, ob das angeschautes Objekt ein "Item"-Skript hat
-            Item item = hit.collider.GetComponent<Item>();
-            if (item != null)
+
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if(interactable != null)
             {
-                // Wenn "E" gedrückt wird, rufe PickUp auf
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    item.PickUp(); // Methode im Item-Skript
+                    interactable.Interact();
                 }
+
+                Debug.Log(interactable.GetInteractText());
             }
 
-            if (hit.collider.CompareTag("Oven"))
-            {
-                Oven oven = hit.collider.GetComponent<Oven>();
-                Debug.Log("GUCKT AUF OVEN");
-                if (oven != null && Input.GetKeyDown(KeyCode.F))
-                {
-                    oven.StartBaking();
-                    return; // Keine weiteren Checks nötig
-                }
-            }
+            
+
         }
     }
 
