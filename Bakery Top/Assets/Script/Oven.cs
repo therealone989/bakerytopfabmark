@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class OvenSystem : MonoBehaviour
+public class OvenSystem : MonoBehaviour, IInteractable
 {
+    [Header("Oven Components")]
     public Animator ovenDoorAnimator;
     public Animator firewoodDoorAnimator;
     public Transform[] firewoodSlots;
@@ -16,58 +17,67 @@ public class OvenSystem : MonoBehaviour
     private bool isOvenClosed = false;
     private bool isBaking = false;
 
-    void Update()
+    public string GetInteractText()
     {
-        if (Input.GetMouseButtonDown(0)) // Linke Maustaste für Interaktion
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        return "Drücke [F], um den Ofen zu benutzen.";
+    }
 
-            if (Physics.Raycast(ray, out hit, 4f))
-            {
-                if (hit.collider.CompareTag("OvenButton") && firewoodCount > 0 && doughCount > 0 && isOvenClosed && !isBaking)
-                {
-                    StartCoroutine(BakeBread());
-                }
-                else if (hit.collider.CompareTag("OvenDoor"))
-                {
-                    ToggleDoor(ovenDoorAnimator);
-                }
-                else if (hit.collider.CompareTag("FirewoodDoor"))
-                {
-                    ToggleDoor(firewoodDoorAnimator);
-                }
-            }
+    public void Interact()
+    {
+        if (firewoodCount > 0 && doughCount > 0 && isOvenClosed && !isBaking)
+        {
+            StartCoroutine(BakeBread());
+        }
+        else
+        {
+            Debug.Log("Der Ofen kann nicht gestartet werden! Stelle sicher, dass er geschlossen ist und Holz & Teig drin sind.");
         }
     }
 
-    void ToggleDoor(Animator doorAnimator)
+    public void ToggleOvenDoor()
+    {
+        ToggleDoor(ovenDoorAnimator);
+    }
+
+    public void ToggleFirewoodDoor()
+    {
+        ToggleDoor(firewoodDoorAnimator);
+    }
+
+    private void ToggleDoor(Animator doorAnimator)
     {
         bool currentState = doorAnimator.GetBool("IsOpen");
         doorAnimator.SetBool("IsOpen", !currentState);
         CheckOvenClosedState();
     }
 
-    void CheckOvenClosedState()
+    private void CheckOvenClosedState()
     {
         isOvenClosed = !ovenDoorAnimator.GetBool("IsOpen") && !firewoodDoorAnimator.GetBool("IsOpen");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
+        Item item = other.GetComponent<Item>(); // Prüfen, ob das Objekt ein Item ist
+
+        if (item != null)
         {
-            PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
-            firewoodCount++;
-        }
-        else if (other.CompareTag("Teig") && doughCount < doughSlots.Length)
-        {
-            PlaceItem(other.gameObject, doughSlots[doughCount]);
-            doughCount++;
+            string itemName = item.GetItemName(); // Den Namen des Items holen
+
+            if (itemName == "Holz" && firewoodCount < firewoodSlots.Length)
+            {
+                PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
+                firewoodCount++;
+            }
+            else if (itemName == "Teig" && doughCount < doughSlots.Length)
+            {
+                PlaceItem(other.gameObject, doughSlots[doughCount]);
+                doughCount++;
+            }
         }
     }
 
-    void PlaceItem(GameObject item, Transform slot)
+    private void PlaceItem(GameObject item, Transform slot)
     {
         Destroy(item);
         GameObject placeholder = new GameObject("Placeholder");
@@ -75,7 +85,7 @@ public class OvenSystem : MonoBehaviour
         placeholder.transform.parent = slot;
     }
 
-    IEnumerator BakeBread()
+    private IEnumerator BakeBread()
     {
         isBaking = true;
         fireEffect.SetActive(true);
