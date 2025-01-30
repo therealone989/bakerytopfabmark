@@ -81,7 +81,7 @@ public class Grabitem : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
         {
             Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-            if (rb != null && hit.collider.CompareTag("Grabbable"))
+            if (rb != null && hit.collider.CompareTag("Grabbable") || hit.collider.CompareTag("Holz"))
             {
                 // Debug objectgname
                 grabbedObject = rb;

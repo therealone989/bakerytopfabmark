@@ -9,11 +9,11 @@ public class ItemSeller : MonoBehaviour
         if (itemSO.statToChange == ItemSO.StatToChange.money)
         {
             moneyManager.AddMoney(itemSO.amountToChangeStat);
-            Debug.Log($"Item verkauft: {itemSO.itenName}. Spieler erh‰lt {itemSO.amountToChangeStat} M¸nzen.");
+            Debug.Log($"Item verkauft: {itemSO.itemName}. Spieler erh‰lt {itemSO.amountToChangeStat} MÅEzen.");
         }
         else
         {
-            Debug.Log($"Item {itemSO.itenName} hat keinen Verkaufswert.");
+            Debug.Log($"Item {itemSO.itemName} hat keinen Verkaufswert.");
         }
     }
 }

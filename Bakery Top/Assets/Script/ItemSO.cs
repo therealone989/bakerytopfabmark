@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ItemSO : ScriptableObject
 {
-    public string itenName;
+    public string itemName;
     public StatToChange statToChange = new StatToChange();
     public int amountToChangeStat;
 

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c6c13be543663946bb79ee6f405cfb5, type: 3}
-  m_Name: Wood
+  m_Name: Holz
   m_EditorClassIdentifier: 
-  itenName: Holz
+  itemName: Holz
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 0

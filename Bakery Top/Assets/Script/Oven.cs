@@ -16,7 +16,28 @@ public class OvenSystem : MonoBehaviour, IInteractable
     private int doughCount = 0;
     private bool isOvenClosed = false;
     private bool isBaking = false;
+    public Collider fireWoodTrigger;
+    public Collider doughTrigger;
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) // Linke Maustaste für Interaktion
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            if (Physics.Raycast(ray, out hit, 3f)) // Reichweite 3m
+            {
+                if (hit.collider.CompareTag("OvenDoor")) // Ofentür öffnen/schließen
+                {
+                    ToggleOvenDoor();
+                }
+                else if (hit.collider.CompareTag("FirewoodDoor")) // Brennholztür öffnen/schließen
+                {
+                    ToggleFirewoodDoor();
+                }
+            }
+        }
+    }
     public string GetInteractText()
     {
         return "Drücke [F], um den Ofen zu benutzen.";
@@ -58,19 +79,24 @@ public class OvenSystem : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        Item item = other.GetComponent<Item>(); // Prüfen, ob das Objekt ein Item ist
+        Debug.Log($"Objekt {other.name} ist in den Trigger eingetreten!"); // Debugging
+
+        Item item = other.GetComponent<Item>(); // Holt das Item-Skript vom getroffenen Objekt
 
         if (item != null)
         {
-            string itemName = item.GetItemName(); // Den Namen des Items holen
+            string itemName = item.GetItemName();
+            Debug.Log($"Erkanntes Item: {itemName}"); // Debugging
 
-            if (itemName == "Holz" && firewoodCount < firewoodSlots.Length)
+            if (other.gameObject.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
             {
+                Debug.Log("Holz erkannt und wird platziert!"); // Debugging
                 PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
                 firewoodCount++;
             }
-            else if (itemName == "Teig" && doughCount < doughSlots.Length)
+            else if (other.gameObject.CompareTag("Teig") && doughCount < doughSlots.Length)
             {
+                Debug.Log("Teig erkannt und wird platziert!"); // Debugging
                 PlaceItem(other.gameObject, doughSlots[doughCount]);
                 doughCount++;
             }
