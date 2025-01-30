@@ -11,13 +11,16 @@ public class OvenSystem : MonoBehaviour, IInteractable
     public GameObject fireEffect;
     public GameObject bakedBreadPrefab;
     public float bakingTime = 10f;
+    public Collider firewoodTrigger; // Collider für die Holzaufnahme
+    public Collider doughTrigger; // Collider für die Teigaufnahme
+    public GameObject[] firewoodPlaceholders; // Platzhalter für Holzstücke
+    public GameObject[] doughPlaceholders; // Platzhalter für Teigstücke
 
     private int firewoodCount = 0;
     private int doughCount = 0;
     private bool isOvenClosed = false;
     private bool isBaking = false;
-    public Collider fireWoodTrigger;
-    public Collider doughTrigger;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Linke Maustaste für Interaktion
@@ -38,6 +41,7 @@ public class OvenSystem : MonoBehaviour, IInteractable
             }
         }
     }
+
     public string GetInteractText()
     {
         return "Drücke [F], um den Ofen zu benutzen.";
@@ -79,8 +83,6 @@ public class OvenSystem : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Objekt {other.name} ist in den Trigger eingetreten!"); // Debugging
-
         Item item = other.GetComponent<Item>(); // Holt das Item-Skript vom getroffenen Objekt
 
         if (item != null)
@@ -88,16 +90,18 @@ public class OvenSystem : MonoBehaviour, IInteractable
             string itemName = item.GetItemName();
             Debug.Log($"Erkanntes Item: {itemName}"); // Debugging
 
-            if (other.gameObject.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
+            if (other.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
             {
                 Debug.Log("Holz erkannt und wird platziert!"); // Debugging
                 PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
+                firewoodPlaceholders[firewoodCount].SetActive(true); // Aktiviert den Platzhalter für Holz
                 firewoodCount++;
             }
-            else if (other.gameObject.CompareTag("Teig") && doughCount < doughSlots.Length)
+            else if (other.CompareTag("Dough") && doughCount < doughSlots.Length)
             {
                 Debug.Log("Teig erkannt und wird platziert!"); // Debugging
                 PlaceItem(other.gameObject, doughSlots[doughCount]);
+                doughPlaceholders[doughCount].SetActive(true); // Aktiviert den Platzhalter für Teig
                 doughCount++;
             }
         }
@@ -125,6 +129,16 @@ public class OvenSystem : MonoBehaviour, IInteractable
         foreach (Transform doughSlot in doughSlots)
         {
             Instantiate(bakedBreadPrefab, doughSlot.position, Quaternion.identity);
+        }
+
+        // Platzhalter zurücksetzen
+        foreach (GameObject placeholder in firewoodPlaceholders)
+        {
+            placeholder.SetActive(false);
+        }
+        foreach (GameObject placeholder in doughPlaceholders)
+        {
+            placeholder.SetActive(false);
         }
 
         firewoodCount = 0;
