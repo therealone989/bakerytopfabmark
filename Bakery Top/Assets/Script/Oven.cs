@@ -1,130 +1,98 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class Oven : MonoBehaviour
+public class OvenSystem : MonoBehaviour
 {
-    [Header ("Einstellungen")]
-    public Transform spawnPoint;
-    public string requiredItemName = "Dough";
-    public string requiredFuelName = "Firewood";
+    public Animator ovenDoorAnimator;
+    public Animator firewoodDoorAnimator;
+    public Transform[] firewoodSlots;
+    public Transform[] doughSlots;
     public GameObject fireEffect;
-    public float bakingTime = 5f;
-    public float fuelBurnTime = 10f;
+    public GameObject bakedBreadPrefab;
+    public float bakingTime = 10f;
 
-    private Item currentItem;
+    private int firewoodCount = 0;
+    private int doughCount = 0;
+    private bool isOvenClosed = false;
     private bool isBaking = false;
-    private bool isHeated = false; // Ob der Ofen heiß ist
-    private Animator animator;
-    private Coroutine burnCoroutine;
 
-    private void Start()
+    void Update()
     {
-        animator = GetComponent<Animator>();
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        Item item = collision.gameObject.GetComponent<Item>();
-        if (item != null)
+        if (Input.GetMouseButtonDown(0)) // Linke Maustaste für Interaktion
         {
-            if (item.itemName == requiredFuelName)
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 4f))
             {
-                AddFuel(item);
+                if (hit.collider.CompareTag("OvenButton") && firewoodCount > 0 && doughCount > 0 && isOvenClosed && !isBaking)
+                {
+                    StartCoroutine(BakeBread());
+                }
+                else if (hit.collider.CompareTag("OvenDoor"))
+                {
+                    ToggleDoor(ovenDoorAnimator);
+                }
+                else if (hit.collider.CompareTag("FirewoodDoor"))
+                {
+                    ToggleDoor(firewoodDoorAnimator);
+                }
             }
-            else if (item.itemName == requiredItemName && isHeated)
-            {
-                currentItem = item;
-                Debug.Log("Dough auf den Ofen gelegt: " + item.itemName);
-
-            }
         }
     }
-    private void OnTriggerExit(Collider collision)
+
+    void ToggleDoor(Animator doorAnimator)
     {
-        Item item = collision.gameObject.GetComponent<Item>();
-        if (item == currentItem)
-        {
-            currentItem = null;
-            Debug.Log("Dough wurde vom Ofen entfernt.");
-        }
+        bool currentState = doorAnimator.GetBool("IsOpen");
+        doorAnimator.SetBool("IsOpen", !currentState);
+        CheckOvenClosedState();
     }
 
-    private void AddFuel(Item fuelItem)
+    void CheckOvenClosedState()
     {
-        if (!isHeated) 
-        {
-            Destroy(fuelItem.gameObject);
-            isHeated = true;
-            Debug.Log("Feuerholz hinzugefügt. Der Ofen wird erhitzt!");
-
-           
-            if (fireEffect != null)
-                fireEffect.SetActive(true);
-
-            burnCoroutine = StartCoroutine(BurnFuel());
-        }
-        else
-        {
-            Debug.Log("Der Ofen ist bereits heiß.");
-        }
+        isOvenClosed = !ovenDoorAnimator.GetBool("IsOpen") && !firewoodDoorAnimator.GetBool("IsOpen");
     }
 
-    private IEnumerator BurnFuel()
+    private void OnTriggerEnter(Collider other)
     {
-        yield return new WaitForSeconds(fuelBurnTime);
-        isHeated = false;
-        Debug.Log("Das Feuer ist erloschen.");
-
-        if (fireEffect != null)
-            fireEffect.SetActive(false);
+        if (other.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
+        {
+            PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
+            firewoodCount++;
+        }
+        else if (other.CompareTag("Teig") && doughCount < doughSlots.Length)
+        {
+            PlaceItem(other.gameObject, doughSlots[doughCount]);
+            doughCount++;
+        }
     }
 
-    private IEnumerator BakeBread()
+    void PlaceItem(GameObject item, Transform slot)
+    {
+        Destroy(item);
+        GameObject placeholder = new GameObject("Placeholder");
+        placeholder.transform.position = slot.position;
+        placeholder.transform.parent = slot;
+    }
+
+    IEnumerator BakeBread()
     {
         isBaking = true;
-        animator.SetTrigger("StartBaking"); 
+        fireEffect.SetActive(true);
+        ovenDoorAnimator.SetTrigger("BakeStart");
 
-        Debug.Log("Backvorgang gestartet...");
         yield return new WaitForSeconds(bakingTime);
 
-        Debug.Log("Backvorgang beendet!");
+        fireEffect.SetActive(false);
+        ovenDoorAnimator.SetTrigger("BakeEnd");
 
-        // Dough zerstören
-        if (currentItem != null)
+        foreach (Transform doughSlot in doughSlots)
         {
-            Destroy(currentItem.gameObject);
-            currentItem = null;
+            Instantiate(bakedBreadPrefab, doughSlot.position, Quaternion.identity);
         }
 
-        // Brot spawnen
-        GameObject breadPrefab = Resources.Load<GameObject>("Prefabs/Bread");
-        if (breadPrefab != null)
-        {
-            Instantiate(breadPrefab, spawnPoint.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Bread Prefab nicht gefunden in Resources/Prefabs!");
-        }
-
-        animator.SetTrigger("EndBaking"); 
+        firewoodCount = 0;
+        doughCount = 0;
         isBaking = false;
-    }
-
-    public void StartBaking()
-    {
-        if (!isBaking && currentItem != null && isHeated)
-        {
-            animator.SetTrigger("OpenOven");
-            StartCoroutine(BakeBread());
-        }
-        else if (!isHeated)
-        {
-            Debug.Log("Der Ofen ist nicht heiß genug zum Backen!");
-        }
-        else
-        {
-            Debug.Log("Kein Teig im Ofen!");
-        }
     }
 }

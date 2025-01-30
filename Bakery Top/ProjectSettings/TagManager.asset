@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Dough
   - Oven
+  - OvenDoor
+  - FirewoodDoor
   layers:
   - Default
   - TransparentFX
