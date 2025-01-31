@@ -93,9 +93,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb4dc6540cfd87d4caaf0537471ef85f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4949887861973196979}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb4dc6540cfd87d4caaf0537471ef85f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3573512361432507270}
   m_SourcePrefab: {fileID: 100100000, guid: eb4dc6540cfd87d4caaf0537471ef85f, type: 3}
 --- !u!1 &5684295581346867339 stripped
 GameObject:
@@ -169,25 +166,3 @@ MonoBehaviour:
   itemSprite: []
   itemDescription: "Holzst\xFCck f\xFCr Ofen"
   itemData: {fileID: 11400000, guid: 9b58a1caf4ed41d408b1ac90e794e607, type: 2}
---- !u!114 &3573512361432507270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5684295581346867339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b255ad18bb9724fab6c93e0c531607, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabRange: 3.5
-  holdDistance: 1
-  moveSpeed: 10
-  throwForce: 500
-  minHoldDistance: 1
-  maxHoldDistance: 3
-  snapThreshold: 0.5
-  rotationSpeed: 500
-  playerCamera: {fileID: 0}
-  cinemachineInputProvider: {fileID: 0}
