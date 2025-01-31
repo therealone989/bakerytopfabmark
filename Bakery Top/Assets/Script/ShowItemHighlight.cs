@@ -28,8 +28,8 @@ public class ShowItemHighlight : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, highlightRange))
         {
-            // Prüft, ob das Objekt den "Grabbable"-Tag hat
-            if (hit.collider.CompareTag("Grabbable"))
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
             {
                 cursorImage.sprite = highlightCursor;
 
