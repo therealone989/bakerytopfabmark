@@ -22,8 +22,6 @@ public class Grabitem : MonoBehaviour
 
     void Update()
     {
-        HandleRayCast(); // Hinzugefügt
-
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -50,28 +48,7 @@ public class Grabitem : MonoBehaviour
         }
     }
 
-    private void HandleRayCast()
-    {
-        // Raycast aus der Kamera, um zu prüfen, ob ein Item im Blickfeld ist
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, grabRange))
-        {
 
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            if(interactable != null)
-            {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    interactable.Interact();
-                }
-
-                Debug.Log(interactable.GetInteractText());
-            }
-
-            
-
-        }
-    }
 
 
     private void TryGrabObject()

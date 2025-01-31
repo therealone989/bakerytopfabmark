@@ -1,71 +1,56 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class OvenSystem : MonoBehaviour, IInteractable
+public class Oven : MonoBehaviour, IInteractable
 {
     [Header("Oven Components")]
-    public Animator ovenDoorAnimator;
-    public Animator firewoodDoorAnimator;
-    public Transform[] firewoodSlots;
-    public Transform[] doughSlots;
-    public GameObject fireEffect;
-    public GameObject bakedBreadPrefab;
-    public float bakingTime = 10f;
-    public Collider firewoodTrigger; // Collider für die Holzaufnahme
-    public Collider doughTrigger; // Collider für die Teigaufnahme
+    public Animator ovenDoorAnimator;     // Animiert die obere Tür
+    public Animator firewoodDoorAnimator; // Animiert die untere Tür
+    public Transform[] firewoodSlots;     // Slots für Holz
+    public Transform[] doughSlots;        // Slots für Teig
+    public GameObject fireEffect;         // Feuer-Effekt während des Backens
+    public GameObject bakedBreadPrefab;   // Gebackenes Brot
+    public float bakingTime = 10f;        // Dauer des Backens
+    public Collider firewoodTrigger;      // Collider für Feuerholz
+    public Collider doughTrigger;         // Collider für Teig
     public GameObject[] firewoodPlaceholders; // Platzhalter für Holzstücke
-    public GameObject[] doughPlaceholders; // Platzhalter für Teigstücke
+    public GameObject[] doughPlaceholders;    // Platzhalter für Teigstücke
+    public GameObject startButton;        // Startknopf für den Ofen
 
-    private int firewoodCount = 0;
-    private int doughCount = 0;
-    private bool isOvenClosed = false;
-    private bool isBaking = false;
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0)) // Linke Maustaste für Interaktion
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, 3f)) // Reichweite 3m
-            {
-                if (hit.collider.CompareTag("OvenDoor")) // Ofentür öffnen/schließen
-                {
-                    ToggleOvenDoor();
-                }
-                else if (hit.collider.CompareTag("FirewoodDoor")) // Brennholztür öffnen/schließen
-                {
-                    ToggleFirewoodDoor();
-                }
-            }
-        }
-    }
+    private int firewoodCount = 0;  // Anzahl der eingesetzten Holzstücke
+    private int doughCount = 0;     // Anzahl der eingesetzten Teigstücke
+    private bool isOvenClosed = false; // Prüft, ob beide Türen geschlossen sind
+    private bool isBaking = false;  // Ist der Ofen gerade am Backen?
 
     public string GetInteractText()
     {
-        return "Drücke [F], um den Ofen zu benutzen.";
+        if (isBaking) return "Das Brot backt gerade...";
+        if (!isOvenClosed) return "Schließe beide Türen, um den Ofen zu starten.";
+        return "Drücke [E], um den Ofen zu starten.";
     }
 
     public void Interact()
     {
-        if (firewoodCount > 0 && doughCount > 0 && isOvenClosed && !isBaking)
+        // Prüfen, ob der Ofen bereit ist zum Starten
+        if (firewoodCount > 0 && doughCount >= 4 && isOvenClosed && !isBaking)
         {
             StartCoroutine(BakeBread());
         }
         else
         {
-            Debug.Log("Der Ofen kann nicht gestartet werden! Stelle sicher, dass er geschlossen ist und Holz & Teig drin sind.");
+            Debug.Log("Ofen kann nicht starten! Türen schließen und Holz & Teig einfügen.");
         }
     }
 
     public void ToggleOvenDoor()
     {
+        Debug.Log("OBEN DOOR");
         ToggleDoor(ovenDoorAnimator);
     }
 
     public void ToggleFirewoodDoor()
     {
+        Debug.Log("Unten DOOR");
         ToggleDoor(firewoodDoorAnimator);
     }
 
@@ -83,26 +68,37 @@ public class OvenSystem : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        Item item = other.GetComponent<Item>(); // Holt das Item-Skript vom getroffenen Objekt
+        Item item = other.GetComponent<Item>();
 
         if (item != null)
         {
             string itemName = item.GetItemName();
-            Debug.Log($"Erkanntes Item: {itemName}"); // Debugging
 
-            if (other.CompareTag("Holz") && firewoodCount < firewoodSlots.Length)
+            if (itemName == "Holz" && firewoodCount < firewoodSlots.Length)
             {
-                Debug.Log("Holz erkannt und wird platziert!"); // Debugging
-                PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
-                firewoodPlaceholders[firewoodCount].SetActive(true); // Aktiviert den Platzhalter für Holz
-                firewoodCount++;
+                if (firewoodDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Brennholztür offen ist
+                {
+                    PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
+                    firewoodPlaceholders[firewoodCount].SetActive(true);
+                    firewoodCount++;
+                }
+                else
+                {
+                    Debug.Log("Die Brennholztür muss offen sein, um Holz einzulegen!");
+                }
             }
-            else if (other.CompareTag("Dough") && doughCount < doughSlots.Length)
+            else if (itemName == "Dough" && doughCount < doughSlots.Length)
             {
-                Debug.Log("Teig erkannt und wird platziert!"); // Debugging
-                PlaceItem(other.gameObject, doughSlots[doughCount]);
-                doughPlaceholders[doughCount].SetActive(true); // Aktiviert den Platzhalter für Teig
-                doughCount++;
+                if (ovenDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Ofentür offen ist
+                {
+                    PlaceItem(other.gameObject, doughSlots[doughCount]);
+                    doughPlaceholders[doughCount].SetActive(true);
+                    doughCount++;
+                }
+                else
+                {
+                    Debug.Log("Die Ofentür muss offen sein, um Teig einzulegen!");
+                }
             }
         }
     }
@@ -119,12 +115,10 @@ public class OvenSystem : MonoBehaviour, IInteractable
     {
         isBaking = true;
         fireEffect.SetActive(true);
-        ovenDoorAnimator.SetTrigger("BakeStart");
 
         yield return new WaitForSeconds(bakingTime);
 
         fireEffect.SetActive(false);
-        ovenDoorAnimator.SetTrigger("BakeEnd");
 
         foreach (Transform doughSlot in doughSlots)
         {
@@ -132,14 +126,8 @@ public class OvenSystem : MonoBehaviour, IInteractable
         }
 
         // Platzhalter zurücksetzen
-        foreach (GameObject placeholder in firewoodPlaceholders)
-        {
-            placeholder.SetActive(false);
-        }
-        foreach (GameObject placeholder in doughPlaceholders)
-        {
-            placeholder.SetActive(false);
-        }
+        foreach (GameObject placeholder in firewoodPlaceholders) placeholder.SetActive(false);
+        foreach (GameObject placeholder in doughPlaceholders) placeholder.SetActive(false);
 
         firewoodCount = 0;
         doughCount = 0;
