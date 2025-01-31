@@ -1549,18 +1549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ofen
       objectReference: {fileID: 0}
-    - target: {fileID: 134534971296400884, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212084337220909955, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.953
-      objectReference: {fileID: 0}
-    - target: {fileID: 540310002333620258, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 734611913729109640, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.6732006
@@ -1601,28 +1589,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1867058325407655261, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3056712655859730802, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3887593504091636814, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.953
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434042679781986172, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.953
-      objectReference: {fileID: 0}
-    - target: {fileID: 7965595086235043567, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.953
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6921271980892201734, guid: aa45eff7784259b449e7b03243f68b68, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1861,7 +1828,7 @@ MonoBehaviour:
   woodPrefab: {fileID: 5684295581346867339, guid: c716bf18d5044ec48b1eecd6099da341, type: 3}
   spawnPoint: {fileID: 1479686349}
   spawnForce: 5
-  chopCooldown: 1
+  chopCooldown: 2
 --- !u!1001 &1133714971
 PrefabInstance:
   m_ObjectHideFlags: 0

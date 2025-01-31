@@ -9,7 +9,7 @@ public class Baum : MonoBehaviour, IInteractable
     public Transform spawnPoint;
     public float spawnForce = 5f;
     private bool canChop = false;
-    public float chopCooldown = 1f;
+    public float chopCooldown = 2f;
 
 
     public string GetInteractText()
