@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 7894514403706598223}
   - component: {fileID: 8222514859715451701}
   - component: {fileID: 2862338132586866286}
+  - component: {fileID: 3411662859740759195}
   m_Layer: 0
   m_Name: "B\xE4cker"
   m_TagString: Player
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b457de1395cf24ba8871a7699e73e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightRange: 2
+  highlightRange: 3.5
   playerCamera: {fileID: 0}
   normalCursor: {fileID: 21300000, guid: 018cdbcc01503d34db130bf112084670, type: 3}
   highlightCursor: {fileID: 21300000, guid: 4f406379e74eeae4d8ef4b26aeffdbf0, type: 3}
@@ -324,6 +325,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerToHide: Kopf01
   cam: {fileID: 0}
+--- !u!114 &3411662859740759195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448787703900066076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d52feb18b3cc047ab2eac428c8b7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 4
+  playerCamera: {fileID: 0}
 --- !u!1 &454995819215419039
 GameObject:
   m_ObjectHideFlags: 0
