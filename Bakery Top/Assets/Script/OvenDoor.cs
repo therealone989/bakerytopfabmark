@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class OvenDoor : MonoBehaviour, IInteractable
 {
@@ -11,18 +11,18 @@ public class OvenDoor : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "Drücke [E], zum öffnen";
+        return "DrÃ¼cke [E], zum Ã¶ffnen";
     }
 
     public void Interact()
     {
         if(oven != null)
         {
-            if(gameObject.name == "ObereTür")
+            if(gameObject.name == "ObereTÃ¼r")
             {
                 oven.ToggleOvenDoor();
             }
-            if(gameObject.name == "UntereTür")
+            if(gameObject.name == "UntereTÃ¼r")
             {
                 oven.ToggleFirewoodDoor();
             }

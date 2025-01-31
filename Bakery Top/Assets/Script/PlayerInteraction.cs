@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInteraction()
     {
-        // Raycast aus der Kamera, um zu pr�fen, ob ein Item im Blickfeld ist
+        // Raycast aus der Kamera, um zu prüfen, ob ein Item im Blickfeld ist
         Ray ray = new Ray(playerCamera.position, playerCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
         {
