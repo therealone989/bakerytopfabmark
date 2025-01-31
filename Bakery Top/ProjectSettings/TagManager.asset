@@ -12,6 +12,8 @@ TagManager:
   - OvenDoor
   - FirewoodDoor
   - Holz
+  - EndOfRoad
+  - Ende
   layers:
   - Default
   - TransparentFX
