@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4327254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.041412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalRotation.w
@@ -48,10 +60,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_Name
-      value: Pedestrian
+      value: Pedestrian(Rot)
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -1094694235107523201, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+    - target: {fileID: 8417361359673230750, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2717d3e5a304aff4fada2e8bcfd67f80, type: 2}
+    - target: {fileID: 8417361359673230750, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2717d3e5a304aff4fada2e8bcfd67f80, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80,7 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8d5924205e1df408e7c4fe2e4d4347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   moveSpeed: 2
   reachDistance: 0.1
 --- !u!95 &8957827674726364922
