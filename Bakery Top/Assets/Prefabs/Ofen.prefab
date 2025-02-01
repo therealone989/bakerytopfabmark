@@ -197,8 +197,8 @@ MonoBehaviour:
   fireEffect: {fileID: 4925112582478059468}
   bakedBreadPrefab: {fileID: 2728717022011842687, guid: 9947a8bf903e490428217556c4184e5d, type: 3}
   bakingTime: 2
-  firewoodTrigger: {fileID: 802446305095226039}
-  doughTrigger: {fileID: 1129893259638444583}
+  firewoodCollider: {fileID: 4464312578449666641}
+  doughCollider: {fileID: 7937220616458912843}
   firewoodPlaceholders:
   - {fileID: 4766580098267439259}
   - {fileID: 8185014914595410958}
@@ -780,6 +780,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6708765312754760962}
   - component: {fileID: 802446305095226039}
+  - component: {fileID: 318729002561812234}
+  - component: {fileID: 1033384910268309975}
   m_Layer: 0
   m_Name: FirewoodTrigger
   m_TagString: Untagged
@@ -817,12 +819,52 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.169187, y: 0.8676782, z: 2.602815}
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &318729002561812234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464312578449666641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacc20e42ac58fc48abd26e222b5d39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderType: 0
+--- !u!54 &1033384910268309975
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464312578449666641}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &6106515758823656831
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +915,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1013,6 +1055,8 @@ GameObject:
   - component: {fileID: 1100730241843465628}
   - component: {fileID: 1736715033248875086}
   - component: {fileID: 1129893259638444583}
+  - component: {fileID: 6901960878169825633}
+  - component: {fileID: 6925307406418322327}
   m_Layer: 0
   m_Name: Backblech(DoughTrigger)
   m_TagString: Untagged
@@ -1103,12 +1147,52 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.014869989, y: 0.020677736, z: 0.00064278755}
   m_Center: {x: 0.000104837585, y: 0, z: 0.0273223}
+--- !u!114 &6901960878169825633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937220616458912843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacc20e42ac58fc48abd26e222b5d39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderType: 1
+--- !u!54 &6925307406418322327
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937220616458912843}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8375612755688172039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1362,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1521,6 +1605,10 @@ PrefabInstance:
     - target: {fileID: 7666882854919055830, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
       propertyPath: m_Name
       value: FireSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666882854919055830, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

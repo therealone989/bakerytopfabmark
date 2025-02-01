@@ -11,8 +11,8 @@ public class Oven : MonoBehaviour, IInteractable
     public GameObject fireEffect;         // Feuer-Effekt während des Backens
     public GameObject bakedBreadPrefab;   // Gebackenes Brot
     public float bakingTime = 10f;        // Dauer des Backens
-    public Collider firewoodTrigger;      // Collider für Feuerholz
-    public Collider doughTrigger;         // Collider für Teig
+    public GameObject firewoodCollider;      // Collider für Feuerholz
+    public GameObject doughCollider;         // Collider für Teig
     public GameObject[] firewoodPlaceholders; // Platzhalter für Holzstücke
     public GameObject[] doughPlaceholders;    // Platzhalter für Teigstücke
     public GameObject startButton;        // Startknopf für den Ofen
@@ -66,42 +66,43 @@ public class Oven : MonoBehaviour, IInteractable
         isOvenClosed = !ovenDoorAnimator.GetBool("IsOpen") && !firewoodDoorAnimator.GetBool("IsOpen");
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Item item = other.GetComponent<Item>();
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    Item item = other.collider.GetComponent<Item>();
 
-        if (item != null)
-        {
-            string itemName = item.GetItemName();
+    //    if (item != null)
+    //    {
+    //        string itemName = item.GetItemName();
 
-            if (itemName == "Holz" && firewoodCount < firewoodSlots.Length)
-            {
-                if (firewoodDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Brennholztür offen ist
-                {
-                    PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
-                    firewoodPlaceholders[firewoodCount].SetActive(true);
-                    firewoodCount++;
-                }
-                else
-                {
-                    Debug.Log("Die Brennholztür muss offen sein, um Holz einzulegen!");
-                }
-            }
-            else if (itemName == "Dough" && doughCount < doughSlots.Length)
-            {
-                if (ovenDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Ofentür offen ist
-                {
-                    PlaceItem(other.gameObject, doughSlots[doughCount]);
-                    doughPlaceholders[doughCount].SetActive(true);
-                    doughCount++;
-                }
-                else
-                {
-                    Debug.Log("Die Ofentür muss offen sein, um Teig einzulegen!");
-                }
-            }
-        }
-    }
+    //        if (itemName == "Holz" && firewoodCount < firewoodSlots.Length)
+    //        {
+    //            if (firewoodDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Brennholztür offen ist
+    //            {
+    //                PlaceItem(other.gameObject, firewoodSlots[firewoodCount]);
+    //                firewoodPlaceholders[firewoodCount].SetActive(true);
+    //                firewoodCount++;
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("Die Brennholztür muss offen sein, um Holz einzulegen!");
+    //            }
+    //        }
+    //        else if (itemName == "Dough" && doughCount < doughSlots.Length)
+    //        {
+    //            if (ovenDoorAnimator.GetBool("IsOpen")) // Prüfen, ob die Ofentür offen ist
+    //            {
+    //                PlaceItem(other.gameObject, doughSlots[doughCount]);
+    //                doughPlaceholders[doughCount].SetActive(true);
+    //                doughCount++;
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("Die Ofentür muss offen sein, um Teig einzulegen!");
+    //            }
+    //        }
+    //    }
+    //}
+
 
     private void PlaceItem(GameObject item, Transform slot)
     {
@@ -109,6 +110,34 @@ public class Oven : MonoBehaviour, IInteractable
         GameObject placeholder = new GameObject("Placeholder");
         placeholder.transform.position = slot.position;
         placeholder.transform.parent = slot;
+    }
+
+    public void AddFirewood(GameObject firewood)
+    {
+        if (firewoodCount < firewoodSlots.Length && firewoodDoorAnimator.GetBool("IsOpen"))
+        {
+            PlaceItem(firewood, firewoodSlots[firewoodCount]);
+            firewoodPlaceholders[firewoodCount].SetActive(true);
+            firewoodCount++;
+        }
+        else
+        {
+            Debug.Log("Die Brennholztür muss offen sein, um Holz einzulegen!");
+        }
+    }
+
+    public void AddDough(GameObject dough)
+    {
+        if (doughCount < doughSlots.Length && ovenDoorAnimator.GetBool("IsOpen"))
+        {
+            PlaceItem(dough, doughSlots[doughCount]);
+            doughPlaceholders[doughCount].SetActive(true);
+            doughCount++;
+        }
+        else
+        {
+            Debug.Log("Die Ofentür muss offen sein, um Teig einzulegen!");
+        }
     }
 
     private IEnumerator BakeBread()
