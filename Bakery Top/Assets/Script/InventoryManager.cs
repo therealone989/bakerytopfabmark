@@ -137,14 +137,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    // Reset der rechten Beschreibung (Bild, Name, Text)
-    private void ResetItemDescription()
-    {
-        foreach (var slot in itemSlot)
-        {
-            slot.ResetDescription();
-        }
-    }
 
     public void ToggleMenus()
     {

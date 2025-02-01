@@ -137,9 +137,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Reduziere die Menge im Slot
         quantity--;
         quantityText.text = quantity > 0 ? quantity.ToString() : "";
-        isFull = quantity > 0;
+        isFull = quantity >= maxNumberOfItems;
+        Debug.Log(isFull);
+
         if (this.quantity <= 0)
         {
+            Debug.Log("EMPTY ALL");
             EmptySlot();
         }
 
