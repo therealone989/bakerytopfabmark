@@ -13,8 +13,6 @@ public class OvenCollider : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("YEE COLLLISIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOON");
-        Debug.Log(oven);
         if (oven == null) return;
 
         Item item = other.collider.GetComponent<Item>();

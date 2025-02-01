@@ -16,6 +16,7 @@ public class Oven : MonoBehaviour, IInteractable
     public GameObject[] firewoodPlaceholders; // Platzhalter für Holzstücke
     public GameObject[] doughPlaceholders;    // Platzhalter für Teigstücke
     public GameObject startButton;        // Startknopf für den Ofen
+    public AudioSource fireSound;
 
     private int firewoodCount = 0;  // Anzahl der eingesetzten Holzstücke
     private int doughCount = 0;     // Anzahl der eingesetzten Teigstücke
@@ -144,10 +145,12 @@ public class Oven : MonoBehaviour, IInteractable
     {
         isBaking = true;
         fireEffect.SetActive(true);
+        fireSound.Play();
 
         yield return new WaitForSeconds(bakingTime);
 
         fireEffect.SetActive(false);
+        fireSound.Stop();
 
         foreach (Transform doughSlot in doughSlots)
         {

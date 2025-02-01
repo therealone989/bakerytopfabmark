@@ -10,17 +10,18 @@ GameObject:
   m_Component:
   - component: {fileID: 734611913729109640}
   - component: {fileID: 3683840759161465734}
+  - component: {fileID: 906639725998171089}
   - component: {fileID: 8575342110399801162}
   - component: {fileID: 7027393124688112312}
   - component: {fileID: 6407751926079978024}
   - component: {fileID: 1913274592069220220}
-  - component: {fileID: 906639725998171089}
   - component: {fileID: 821014939508709474}
   - component: {fileID: 334766514650004178}
   - component: {fileID: 754026489568474279}
   - component: {fileID: 5120979700751857910}
   - component: {fileID: 3095603336726813882}
   - component: {fileID: 5491909333795853814}
+  - component: {fileID: 2891518639870346287}
   m_Layer: 0
   m_Name: Ofen
   m_TagString: Untagged
@@ -85,6 +86,49 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &906639725998171089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106411869998658610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badccba0d5c6a4d40a5793ca792a0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovenDoorAnimator: {fileID: 6851184144632399350}
+  firewoodDoorAnimator: {fileID: 1529900490734025196}
+  firewoodSlots:
+  - {fileID: 5291056613063211553}
+  - {fileID: 8853183095370387124}
+  - {fileID: 1717275136119632889}
+  - {fileID: 7801660046095923005}
+  - {fileID: 3000449510938368779}
+  doughSlots:
+  - {fileID: 7965595086235043567}
+  - {fileID: 4434042679781986172}
+  - {fileID: 3887593504091636814}
+  - {fileID: 212084337220909955}
+  fireEffect: {fileID: 4925112582478059468}
+  bakedBreadPrefab: {fileID: 2728717022011842687, guid: 9947a8bf903e490428217556c4184e5d, type: 3}
+  bakingTime: 4
+  firewoodCollider: {fileID: 4464312578449666641}
+  doughCollider: {fileID: 7937220616458912843}
+  firewoodPlaceholders:
+  - {fileID: 4766580098267439259}
+  - {fileID: 8185014914595410958}
+  - {fileID: 2062415600997968195}
+  - {fileID: 7426084863139638663}
+  - {fileID: 2515379424678478257}
+  doughPlaceholders:
+  - {fileID: 3056712655859730802}
+  - {fileID: 134534971296400884}
+  - {fileID: 540310002333620258}
+  - {fileID: 1867058325407655261}
+  startButton: {fileID: 0}
+  fireSound: {fileID: 4593489439708356045}
 --- !u!65 &8575342110399801162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169,48 +213,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19799402, y: 2.6603553, z: 2.669736}
   m_Center: {x: 0.72932255, y: 3.8953984, z: 0.018760677}
---- !u!114 &906639725998171089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106411869998658610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badccba0d5c6a4d40a5793ca792a0481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ovenDoorAnimator: {fileID: 6851184144632399350}
-  firewoodDoorAnimator: {fileID: 1529900490734025196}
-  firewoodSlots:
-  - {fileID: 5291056613063211553}
-  - {fileID: 8853183095370387124}
-  - {fileID: 1717275136119632889}
-  - {fileID: 7801660046095923005}
-  - {fileID: 3000449510938368779}
-  doughSlots:
-  - {fileID: 7965595086235043567}
-  - {fileID: 4434042679781986172}
-  - {fileID: 3887593504091636814}
-  - {fileID: 212084337220909955}
-  fireEffect: {fileID: 4925112582478059468}
-  bakedBreadPrefab: {fileID: 2728717022011842687, guid: 9947a8bf903e490428217556c4184e5d, type: 3}
-  bakingTime: 2
-  firewoodCollider: {fileID: 4464312578449666641}
-  doughCollider: {fileID: 7937220616458912843}
-  firewoodPlaceholders:
-  - {fileID: 4766580098267439259}
-  - {fileID: 8185014914595410958}
-  - {fileID: 2062415600997968195}
-  - {fileID: 7426084863139638663}
-  - {fileID: 2515379424678478257}
-  doughPlaceholders:
-  - {fileID: 3056712655859730802}
-  - {fileID: 134534971296400884}
-  - {fileID: 540310002333620258}
-  - {fileID: 1867058325407655261}
-  startButton: {fileID: 0}
 --- !u!65 &821014939508709474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -337,6 +339,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6971085, y: 0.23023808, z: 3.6056104}
   m_Center: {x: 0.013835614, y: 2.2299542, z: -0.0023056683}
+--- !u!65 &2891518639870346287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106411869998658610}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.65, y: 0.9300003, z: 2.6691394}
+  m_Center: {x: 0, y: 4.74, z: 0.019462178}
 --- !u!1 &134534971296400884
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +446,59 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &494080657053832259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5476293375173886819}
+  - component: {fileID: 4434482434346917497}
+  m_Layer: 0
+  m_Name: ColliderBrot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5476293375173886819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494080657053832259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.712, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6908229086607397664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4434482434346917497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494080657053832259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21575312, y: 0.19999999, z: 1.4073519}
+  m_Center: {x: 0.28697017, y: -0.18, z: -0.0007801331}
 --- !u!1 &540310002333620258
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +900,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.169187, y: 0.8676782, z: 2.602815}
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Center: {x: -0.03, y: 1.35, z: 0}
 --- !u!114 &318729002561812234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,6 +974,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8019231329017756322}
+  - {fileID: 5476293375173886819}
   m_Father: {fileID: 734611913729109640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8003456958041654543
@@ -1602,6 +1679,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5462398299886426403, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.425
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462398299886426403, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.673
+      objectReference: {fileID: 0}
     - target: {fileID: 7666882854919055830, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
       propertyPath: m_Name
       value: FireSpawn
@@ -1615,6 +1700,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
+--- !u!82 &4593489439708356045 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1261259510245352407, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
+  m_PrefabInstance: {fileID: 3332591814834322970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4925112582478059468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7666882854919055830, guid: 2de59a774c51420479d58ef1afac49ee, type: 3}
