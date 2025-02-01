@@ -1,3 +1,4 @@
+Ôªøusing JetBrains.Annotations;
 using System.Collections;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ public class Baum : MonoBehaviour, IInteractable
         StartCoroutine(ChopCooldown());
     }
 
+    public string GetPlayerAnimation()
+    {
+        return "CutWood";
+    }
+
     private void SpawnWood()
     {
         if (woodPrefab != null && spawnPoint != null)
@@ -30,11 +36,11 @@ public class Baum : MonoBehaviour, IInteractable
             // Holz-Objekt instanziieren
             GameObject wood = Instantiate(woodPrefab, spawnPoint.position, Random.rotation);
 
-            // Rigidbody hinzuf¸gen und Wurfkraft anwenden
+            // Rigidbody hinzuf√ºgen und Wurfkraft anwenden
             Rigidbody rb = wood.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // Zuf‰llige Wurfrichtung
+                // ZufËàÅlige Wurfrichtung
                 Vector3 randomDirection = new Vector3(
                     Random.Range(-1f, 1f),
                     Random.Range(0.5f, 1f), // Leicht nach oben werfen

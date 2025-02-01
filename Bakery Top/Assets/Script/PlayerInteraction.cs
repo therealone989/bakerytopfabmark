@@ -5,8 +5,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Interaction Settings")]
     public float interactRange = 4f;
     public Transform playerCamera;
-
-
+    public Animator playerAnimator;
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +24,11 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    string playerAnim = interactable.GetPlayerAnimation();
+                    if (!string.IsNullOrEmpty(playerAnim))
+                    {
+                        playerAnimator.SetTrigger(playerAnim);
+                    }
                     interactable.Interact();
                 }
                 Debug.Log(hit.transform.name);

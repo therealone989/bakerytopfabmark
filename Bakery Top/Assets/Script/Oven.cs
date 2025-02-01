@@ -43,6 +43,11 @@ public class Oven : MonoBehaviour, IInteractable
         }
     }
 
+    public string GetPlayerAnimation()
+    {
+        return "";
+    }
+
     public void ToggleOvenDoor()
     {
         Debug.Log("OBEN DOOR");

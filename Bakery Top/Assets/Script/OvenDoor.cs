@@ -29,5 +29,9 @@ public class OvenDoor : MonoBehaviour, IInteractable
         }
     }
 
+    public string GetPlayerAnimation()
+    {
+        return "";
+    }
 
 }

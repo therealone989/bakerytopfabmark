@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Item : MonoBehaviour, IInteractable
 {
@@ -30,7 +30,7 @@ public class Item : MonoBehaviour, IInteractable
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite, itemDescription);
         if(leftOverItems <= 0)
         {
-            // Zerstört das Objekt nach dem Aufheben
+            // Zerstî’št das Objekt nach dem Aufheben
             Destroy(gameObject);
         } else
         {
@@ -45,10 +45,14 @@ public class Item : MonoBehaviour, IInteractable
         PickUp();
     }
 
-    // Text fE UI-Anzeige
+    public string GetPlayerAnimation()
+    {
+        return "";
+    }
+    // Text fãƒ» UI-Anzeige
     public string GetInteractText()
     {
-        return $"DrEke [E], um {itemName} aufzuheben";
+        return $"DrÃ¼cke [E], um {itemName} aufzuheben";
     }
 
     public string GetItemName()

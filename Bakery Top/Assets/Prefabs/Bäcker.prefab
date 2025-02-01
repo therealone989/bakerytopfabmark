@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 4
   playerCamera: {fileID: 0}
+  playerAnimator: {fileID: 5336324922887133522}
 --- !u!1 &454995819215419039
 GameObject:
   m_ObjectHideFlags: 0
