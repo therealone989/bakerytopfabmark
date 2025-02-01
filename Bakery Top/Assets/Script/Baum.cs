@@ -9,8 +9,8 @@ public class Baum : MonoBehaviour, IInteractable
     public GameObject woodPrefab;
     public Transform spawnPoint;
     public float spawnForce = 5f;
-    private bool canChop = false;
-    public float chopCooldown = 2f;
+    private bool canChop = true;
+    public float chopCooldown = 1.5f;
 
 
     public string GetInteractText()
@@ -20,13 +20,15 @@ public class Baum : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (!canChop) return;  // Verhindert mehrfaches Spammen
+
         SpawnWood();
         StartCoroutine(ChopCooldown());
     }
 
     public string GetPlayerAnimation()
     {
-        return "CutWood";
+        return canChop ? "CutWood" : "";  // Falls canChop false ist, gibt es keinen Animation-String zurück
     }
 
     private void SpawnWood()

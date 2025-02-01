@@ -163,7 +163,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         GameObject itemPrefab = Resources.Load<GameObject>("Prefabs/" + itemName);
         if (itemPrefab != null)
         {
-            GameObject spawnedItem = Instantiate(itemPrefab, spawnPosition, Quaternion.identity);
+            GameObject spawnedItem = Instantiate(itemPrefab, spawnPosition, itemPrefab.transform.rotation);
             return spawnedItem;
         }
         else

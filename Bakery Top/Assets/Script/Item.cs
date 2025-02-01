@@ -30,6 +30,7 @@ public class Item : MonoBehaviour, IInteractable
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite, itemDescription);
         if(leftOverItems <= 0)
         {
+            FindFirstObjectByType<Grabitem>().isGrabbing = false;
             // Zerstört das Objekt nach dem Aufheben
             Destroy(gameObject);
         } else

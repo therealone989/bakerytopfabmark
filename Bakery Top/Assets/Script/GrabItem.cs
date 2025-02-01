@@ -12,6 +12,7 @@ public class Grabitem : MonoBehaviour
     public float maxHoldDistance = 3f;
     public float snapThreshold = 0.5f;
     public float rotationSpeed = 50f;
+    public bool isGrabbing = false;
 
     [Header("References")]
     public Transform playerCamera;
@@ -61,6 +62,7 @@ public class Grabitem : MonoBehaviour
             if (rb != null && hit.collider.CompareTag("Grabbable") || hit.collider.CompareTag("Holz") || hit.collider.CompareTag("Dough"))
             {
                 // Debug objectgname
+                isGrabbing = true;
                 grabbedObject = rb;
                 grabbedObject.useGravity = false;
                 grabbedObject.linearDamping = 10f;
@@ -73,6 +75,7 @@ public class Grabitem : MonoBehaviour
     {
         if (grabbedObject != null)
         {
+            isGrabbing = false;
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
             grabbedObject.AddForce(playerCamera.forward * throwForce);
@@ -84,6 +87,7 @@ public class Grabitem : MonoBehaviour
     {
         if (grabbedObject != null)
         {
+            isGrabbing = false;
             grabbedObject.interpolation = RigidbodyInterpolation.None;
             grabbedObject.useGravity = true;
             grabbedObject.linearDamping = 1f;
