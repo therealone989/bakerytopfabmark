@@ -30,7 +30,7 @@ public class Item : MonoBehaviour, IInteractable
         int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite, itemDescription);
         if(leftOverItems <= 0)
         {
-            // Zerstt das Objekt nach dem Aufheben
+            // Zerstört das Objekt nach dem Aufheben
             Destroy(gameObject);
         } else
         {
@@ -47,9 +47,9 @@ public class Item : MonoBehaviour, IInteractable
 
     public string GetPlayerAnimation()
     {
-        return "";
+        return "CutWood";
     }
-    // Text f・ UI-Anzeige
+    // Text für UI-Anzeige
     public string GetInteractText()
     {
         return $"Drücke [E], um {itemName} aufzuheben";
