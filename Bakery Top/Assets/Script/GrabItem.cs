@@ -118,7 +118,7 @@ public class Grabitem : MonoBehaviour
             isRotating = true;
 
             // Setzt die Rotation und Winkelgeschwindigkeit des Objekts zurück
-            grabbedObject.transform.rotation = Quaternion.identity;
+            grabbedObject.transform.rotation = grabbedObject.transform.rotation;
             grabbedObject.angularVelocity = Vector3.zero;
 
             // Deaktiviert die Kamerasteuerung
