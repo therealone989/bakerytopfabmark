@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Baum : MonoBehaviour, IInteractable
 {
-
     [Header("Settings")]
     public GameObject woodPrefab;
     public Transform spawnPoint;
@@ -12,10 +11,12 @@ public class Baum : MonoBehaviour, IInteractable
     private bool canChop = true;
     public float chopCooldown = 1.5f;
 
+    private int chopCount = 0; // Zähler für die Anzahl der Schläge
+    public int maxChops = 5;   // Maximale Anzahl an Schlägen, bevor der Baum zerstört wird
 
     public string GetInteractText()
     {
-        return canChop ? "Schlage den Baum mit der axt! (Linksclick)" : "Warte noch ein Moment bis du schlagen kannst!";
+        return canChop ? "Schlage den Baum mit der Axt! (Linksklick)" : "Warte noch einen Moment!";
     }
 
     public void Interact()
@@ -23,7 +24,16 @@ public class Baum : MonoBehaviour, IInteractable
         if (!canChop) return;  // Verhindert mehrfaches Spammen
 
         SpawnWood();
-        StartCoroutine(ChopCooldown());
+        chopCount++;  // Erhöhe den Schlag-Zähler
+
+        if (chopCount >= maxChops)
+        {
+            DestroyTree(); // Baum zerstören, wenn das Limit erreicht ist
+        }
+        else
+        {
+            StartCoroutine(ChopCooldown());
+        }
     }
 
     public string GetPlayerAnimation()
@@ -42,7 +52,7 @@ public class Baum : MonoBehaviour, IInteractable
             Rigidbody rb = wood.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // Zuf舁lige Wurfrichtung
+                // Zufällige Wurfrichtung
                 Vector3 randomDirection = new Vector3(
                     Random.Range(-1f, 1f),
                     Random.Range(0.5f, 1f), // Leicht nach oben werfen
@@ -63,5 +73,11 @@ public class Baum : MonoBehaviour, IInteractable
         canChop = false;
         yield return new WaitForSeconds(chopCooldown);
         canChop = true;
+    }
+
+    private void DestroyTree()
+    {
+        Debug.Log("Der Baum wurde gefällt!"); // Debug-Meldung zur Überprüfung
+        Destroy(gameObject); // Löscht das GameObject, an dem das Skript hängt
     }
 }

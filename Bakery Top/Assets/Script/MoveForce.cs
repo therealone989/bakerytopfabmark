@@ -145,13 +145,4 @@ public class MoveForce : MonoBehaviour
             isJumping = false; // Sicherstellen, dass das Flag zurückgesetzt wird
         }
     }
-    private void RotateHeadToCamera()
-    {
-        if (headTransform == null) return;
-
-        // NUR YAW und PITCH der Kamera übernehmen (keine Z-Drehung)
-        Quaternion targetRotation = Quaternion.Euler(cameraTransform.eulerAngles.x, cameraTransform.eulerAngles.y, headTransform.eulerAngles.z);
-
-        headTransform.rotation = targetRotation;
-    }
 }
