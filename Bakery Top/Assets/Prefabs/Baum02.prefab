@@ -255,7 +255,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4151824052557111364}
-  - component: {fileID: 5686007104764727357}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -278,20 +277,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5398256761884960338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5686007104764727357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5751061680061436612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa6c26f39045cae4ba2df3576d2734bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  woodPrefab: {fileID: 5684295581346867339, guid: c716bf18d5044ec48b1eecd6099da341, type: 3}
-  spawnPoint: {fileID: 4151824052557111364}
-  spawnForce: 5
-  chopCooldown: 2
-  maxChops: 5

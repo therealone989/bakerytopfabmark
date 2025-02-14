@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,11 +12,23 @@ public class Baum : MonoBehaviour, IInteractable
     public float chopCooldown = 1.5f;
 
     private int chopCount = 0; // Zähler für die Anzahl der Schläge
-    public int maxChops = 5;   // Maximale Anzahl an Schlägen, bevor der Baum zerstört wird
+    public int maxChops = 5;   // Maximale Anzahl an Schlägen
+
+    [Header("Baum Wachstum")]
+    public float shrinkTime = 1f;    // Dauer, bis der Baum geschrumpft ist
+    public float regrowDelay = 5f;   // Wie lange bleibt der Baum klein?
+    public float growTime = 3f;      // Dauer des Wachstums
+
+    private Vector3 originalScale;   // Speichert die normale Größe
+
+    private void Start()
+    {
+        originalScale = transform.localScale; // Speichert die normale Größe
+    }
 
     public string GetInteractText()
     {
-        return canChop ? "Schlage den Baum mit der Axt! (Linksklick)" : "Warte noch einen Moment!";
+        return canChop ? "Schlage den Baum mit der Axt! (Linksklick)" : "Warte einen Moment!";
     }
 
     public void Interact()
@@ -24,11 +36,11 @@ public class Baum : MonoBehaviour, IInteractable
         if (!canChop) return;  // Verhindert mehrfaches Spammen
 
         SpawnWood();
-        chopCount++;  // Erhöhe den Schlag-Zähler
+        chopCount++;
 
         if (chopCount >= maxChops)
         {
-            DestroyTree(); // Baum zerstören, wenn das Limit erreicht ist
+            StartCoroutine(ShrinkTree()); // Baum wird gefällt und startet den Zyklus
         }
         else
         {
@@ -38,25 +50,22 @@ public class Baum : MonoBehaviour, IInteractable
 
     public string GetPlayerAnimation()
     {
-        return canChop ? "CutWood" : "";  // Falls canChop false ist, gibt es keinen Animation-String zurück
+        return canChop ? "CutWood" : "";
     }
 
     private void SpawnWood()
     {
         if (woodPrefab != null && spawnPoint != null)
         {
-            // Holz-Objekt instanziieren
-            GameObject wood = Instantiate(woodPrefab, spawnPoint.position, Random.rotation);
-
-            // Rigidbody hinzufügen und Wurfkraft anwenden
+            GameObject wood = Instantiate(woodPrefab, spawnPoint.position, UnityEngine.Random.rotation);
             Rigidbody rb = wood.GetComponent<Rigidbody>();
+
             if (rb != null)
             {
-                // Zufällige Wurfrichtung
                 Vector3 randomDirection = new Vector3(
-                    Random.Range(-1f, 1f),
-                    Random.Range(0.5f, 1f), // Leicht nach oben werfen
-                    Random.Range(-1f, 1f)
+                   UnityEngine.Random.Range(-1f, 1f),
+                    UnityEngine.Random.Range(0.5f, 1f),
+                    UnityEngine.Random.Range(-1f, 1f)
                 ).normalized;
 
                 rb.AddForce(randomDirection * spawnForce, ForceMode.Impulse);
@@ -75,9 +84,53 @@ public class Baum : MonoBehaviour, IInteractable
         canChop = true;
     }
 
-    private void DestroyTree()
+    private IEnumerator ShrinkTree()
     {
-        Debug.Log("Der Baum wurde gefällt!"); // Debug-Meldung zur Überprüfung
-        Destroy(gameObject); // Löscht das GameObject, an dem das Skript hängt
+        canChop = false; // Baum kann nicht mehr gehackt werden
+        float elapsedTime = 0f;
+        Vector3 startScale = transform.localScale;
+        Vector3 targetScale = Vector3.zero; // Baum verschwindet
+
+        while (elapsedTime < shrinkTime)
+        {
+            transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / shrinkTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = Vector3.zero; // Falls Lerp nicht exakt trifft
+        gameObject.SetActive(false); // Baum ist unsichtbar und nicht interaktiv
+
+        //yield return new WaitForSeconds(regrowDelay); // Wartezeit, bevor er wächst
+
+        Invoke(nameof(ReactivateAndGrow), regrowDelay);
+
+        
+    }
+
+    private void ReactivateAndGrow()
+    {
+        gameObject.SetActive(true); // Baum ist unsichtbar und nicht interaktiv
+        StartCoroutine(GrowTree());
+    }
+
+    private IEnumerator GrowTree()
+    {
+        Debug.Log("GGROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOW");
+        gameObject.SetActive(true); // Baum wird wieder sichtbar
+        float elapsedTime = 0f;
+        Vector3 startScale = Vector3.zero;
+        Vector3 targetScale = originalScale; // Baum wächst auf Originalgröße
+
+        while (elapsedTime < growTime)
+        {
+            transform.localScale = Vector3.Lerp(startScale, targetScale, elapsedTime / growTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale; // Finale Größe setzen
+        chopCount = 0; // Baum ist wieder hackbar
+        canChop = true;
     }
 }

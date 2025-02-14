@@ -2,11 +2,11 @@
 
 public class ClowdMovement : MonoBehaviour
 {
-    public float speed = 5f;  // Geschwindigkeit des Autos
+    public float speed = 5f;  // Geschwindigkeit der Wolke
 
     private void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);  // Auto bewegt sich in seine eigene Vorwärtsrichtung
+        transform.Translate(Vector3.right * speed * Time.deltaTime);  // Wolke bewegt sich in seine eigene Vorwärtsrichtung
     }
 
     private void OnTriggerEnter(Collider other)

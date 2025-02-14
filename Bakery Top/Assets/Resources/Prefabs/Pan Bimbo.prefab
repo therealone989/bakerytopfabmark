@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.814
+      value: 4.496182
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.243
+      value: 1.1716354
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.991547
+      value: 4.0370607
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e0a0ed2510211ec4b89aa795750aa5d0, type: 2}
     - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_Name
-      value: Brot01
+      value: Pan Bimbo
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e502973009d2575418a4526edbb87d39, type: 3}
       propertyPath: m_TagString
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Pan Bimbo
-  quantity: 1
+  quantity: 5
   itemSprite:
   - {fileID: 21300000, guid: 3bffff6abb5d6454f84ca0b980a7cde9, type: 3}
   - {fileID: 21300000, guid: 193ce3f8eee761c4da299fc78871d2dc, type: 3}
