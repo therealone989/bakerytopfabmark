@@ -13,7 +13,6 @@ public class CarMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Start Collision");
         if (collision.gameObject.CompareTag("Player"))
         {
             Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
