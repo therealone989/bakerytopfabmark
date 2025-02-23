@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 1331414796563130971}
   - component: {fileID: 909020432358931087}
   - component: {fileID: 337299360619067600}
+  - component: {fileID: 8017461052946437337}
   m_Layer: 0
   m_Name: Baum03
   m_TagString: Baum
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &157923304488292660
 Transform:
@@ -107,6 +108,9 @@ MonoBehaviour:
   spawnForce: 5
   chopCooldown: 2
   maxChops: 5
+  shrinkTime: 1
+  regrowDelay: 5
+  growTime: 3
 --- !u!64 &337299360619067600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129,6 +133,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: 66530566621e3a24abc3422dca3a8ed8, type: 3}
+--- !u!114 &8017461052946437337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683103227892697998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7007178327053586690
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +167,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8113517533141080631
 Transform:

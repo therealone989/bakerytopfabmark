@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OvenCollider : MonoBehaviour
 {
-    public enum ColliderType { Firewood, Dough }
+    public enum ColliderType { Firewood, Dough };
     public ColliderType colliderType;
     private Oven oven;
 

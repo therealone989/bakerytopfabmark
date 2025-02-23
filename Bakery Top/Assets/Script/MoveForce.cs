@@ -33,7 +33,6 @@ public class MoveForce : MonoBehaviour
 
     [Header("Animation")]
     private Animator animator;
-    private bool isJumping = false;
     [Header("Kopf-Rotation")]
     public Transform headTransform;
 
@@ -110,7 +109,6 @@ public class MoveForce : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        isJumping = true;
         UpdateAnimation();
     }
 
@@ -142,7 +140,6 @@ public class MoveForce : MonoBehaviour
         else
         {
             animator.SetBool("IsJumping", false);
-            isJumping = false; // Sicherstellen, dass das Flag zurückgesetzt wird
         }
     }
 }

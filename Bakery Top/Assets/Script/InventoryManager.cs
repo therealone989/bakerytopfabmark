@@ -31,8 +31,12 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
 
-        if (grabItemScript != null && grabItemScript.isGrabbing)
+        if (grabItemScript != null && grabItemScript.isGrabbing == true)
+        {
+            Debug.Log("IS HALTING");
             return;
+        }
+
         if(Input.GetButtonDown("Inventory") && menuActivated)
         {
             ToggleInventory(false);

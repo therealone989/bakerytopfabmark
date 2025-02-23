@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -24.731272
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.49902344
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.0165434
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8957827674726364922}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6391086109673798326}
   m_SourcePrefab: {fileID: 100100000, guid: d5d4b4e63e4280247961a8f526157632, type: 3}
 --- !u!1 &8236717348537314493 stripped
 GameObject:
@@ -96,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8d5924205e1df408e7c4fe2e4d4347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  reachDistance: 0.1
+  bakeryEntrance: {fileID: 0}
 --- !u!95 &8957827674726364922
 Animator:
   serializedVersion: 7
@@ -120,3 +122,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &6391086109673798326
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236717348537314493}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

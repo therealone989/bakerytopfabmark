@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MarkScene.unity
+    guid: f046cc4240fe6b0458a7840ea3681fe3
+  - enabled: 0
     path: Assets/Scenes/FabiScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

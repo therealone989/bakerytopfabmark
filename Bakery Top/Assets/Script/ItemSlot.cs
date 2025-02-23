@@ -149,9 +149,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         // Schließe das Inventar
         inventoryManager.ToggleInventory(false);
 
-
+        Grabitem grabItemScript = FindFirstObjectByType<Grabitem>();
         // Übergib das gespawnte Item an den Grabber
-        FindFirstObjectByType<Grabitem>().GrabObject(spawnedItem);
+        grabItemScript.GrabObject(spawnedItem);
+        grabItemScript.isGrabbing = true;
+
     }
 
     private GameObject SpawnItem()

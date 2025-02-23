@@ -1,58 +1,72 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class PedestrianSpawner : MonoBehaviour
 {
-    [Header("Spawner Einstellungen")]
-    public GameObject[] pedestrianPrefabs;    // Array von Passanten-Prefabs
-    public float minSpawnInterval = 2f;        // Kürzester Intervall
-    public float maxSpawnInterval = 5f;        // Längster Intervall
-    public Transform spawnPoint;               // Startposition für den Passanten
+    public GameObject pedestrianPrefab;
+    public Transform spawnPoint;
+    public Transform bakeryEntrance;  // Ziel: Eingang der Bäckerei
+    public float spawnDelay = 2f;     // Verzögerung bis der Passant spawnt
 
-    [Header("Wegpunkt Einstellungen")]
-    public Transform[] waypoints;              // Array der Wegpunkte, die der Passant ablaufen soll
-
-    private float timer;
-    private float randomSpawnInterval;
+    private bool hasSpawned = false;  // Damit nur einer spawnt
 
     private void Start()
     {
-        // Setze den zufälligen Intervall zu Beginn für jeden Spawner
-        randomSpawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-
-        // Wenn der Timer den zufällig bestimmten Intervall überschreitet
-        if (timer >= randomSpawnInterval)
+        if (bakeryEntrance == null)
         {
-            SpawnPedestrian();
-            timer = 0f;
-
-            // Setze den Timer mit einem neuen zufälligen Intervall zurück
-            randomSpawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+            Debug.LogError("❌ BakeryEntrance ist nicht zugewiesen! Bitte im Inspector setzen.");
         }
+        else
+        {
+            Debug.Log("✅ BakeryEntrance ist korrekt gesetzt: " + bakeryEntrance.position);
+        }
+
+        Invoke("SpawnPedestrian", spawnDelay);  // Warten und dann Passanten spawnen
     }
 
     private void SpawnPedestrian()
     {
-        // Wähle zufällig ein Prefab aus dem Array
-        int randomIndex = Random.Range(0, pedestrianPrefabs.Length);
-        GameObject selectedPrefab = pedestrianPrefabs[randomIndex];
+        if (hasSpawned) return;  // Falls schon einer gespawnt wurde, nichts tun
+        hasSpawned = true;
 
-        // Erstelle den Passanten an der Spawn-Position
-        GameObject pedestrian = Instantiate(selectedPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject pedestrian = Instantiate(pedestrianPrefab, spawnPoint.position, Quaternion.identity);
+        NavMeshAgent agent = pedestrian.GetComponent<NavMeshAgent>();
 
-        // Hole das PedestrianMovement-Skript und übergebe die Waypoints
-        PedestrianMovement movement = pedestrian.GetComponent<PedestrianMovement>();
-        if (movement != null)
+        if (agent != null)
         {
-            movement.SetWaypoints(waypoints);
+            Debug.Log("🚶 Pedestrian gespawnt und NavMeshAgent gefunden!");
+            bool success = agent.SetDestination(bakeryEntrance.position);
+
+            if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+            {
+                Debug.LogError("❌ Der NavMeshAgent konnte keinen Pfad berechnen! Liegt das Ziel auf dem NavMesh?");
+            }
+
+            if (success)
+            {
+                Debug.Log("✅ Ziel gesetzt: " + bakeryEntrance.position);
+                StartCoroutine(WaitUntilArrival(agent)); // Überwachen, wann er ankommt
+            }
+            else
+            {
+                Debug.LogError("❌ SetDestination hat nicht funktioniert!");
+            }
         }
         else
         {
-            Debug.LogWarning("Das Passanten-Prefab hat kein PedestrianMovement-Skript angehängt.");
+            Debug.LogError("❌ Das Prefab hat keinen NavMeshAgent!");
         }
+    }
+
+    private System.Collections.IEnumerator WaitUntilArrival(NavMeshAgent agent)
+    {
+        while (!agent.pathPending && agent.remainingDistance > 0.5f)
+        {
+            Debug.Log("🚶‍♂️ Läuft... Distanz zum Ziel: " + agent.remainingDistance);
+            yield return null;  // Warten, bis er das Ziel erreicht
+        }
+
+        agent.isStopped = true;  // Bewegung stoppen
+        Debug.Log("🏁 Pedestrian hat das Ziel erreicht!");
     }
 }

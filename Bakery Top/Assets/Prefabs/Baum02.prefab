@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &423642729475748702
 Transform:
@@ -97,12 +97,13 @@ GameObject:
   - component: {fileID: 5398256761884960338}
   - component: {fileID: 5033099597523003297}
   - component: {fileID: 6433132908547924299}
+  - component: {fileID: 969589703873041179}
   m_Layer: 0
   m_Name: Baum02
   m_TagString: Baum
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5398256761884960338
 Transform:
@@ -138,7 +139,10 @@ MonoBehaviour:
   spawnPoint: {fileID: 4151824052557111364}
   spawnForce: 5
   chopCooldown: 2
-  maxChops: 5
+  maxChops: 1
+  shrinkTime: 5
+  regrowDelay: 3
+  growTime: 5
 --- !u!65 &6433132908547924299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,6 +164,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.63296723, y: 2.1643777, z: 0.63929546}
   m_Center: {x: -0.012656291, y: 1.0389078, z: -0.0031640048}
+--- !u!114 &969589703873041179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4729242781773511912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5110652216276923357
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +200,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9123118010259602743
 Transform:
@@ -260,7 +284,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4151824052557111364
 Transform:

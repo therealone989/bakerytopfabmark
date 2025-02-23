@@ -19,9 +19,11 @@ public class Item : MonoBehaviour, IInteractable
     [SerializeField] private ItemSO itemData;
 
     private InventoryManager inventoryManager;
+    private ChatBubble chatBubble;
 
     void Start()
     {
+        chatBubble = GameObject.FindFirstObjectByType<ChatBubble>();
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
@@ -53,7 +55,7 @@ public class Item : MonoBehaviour, IInteractable
     // Text für UI-Anzeige
     public string GetInteractText()
     {
-        return $"Drücke [E], um {itemName} aufzuheben";
+        return $"{itemName} aufheben";
     }
 
     public string GetItemName()

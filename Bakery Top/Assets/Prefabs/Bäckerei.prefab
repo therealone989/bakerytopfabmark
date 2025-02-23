@@ -278,6 +278,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.1903865}
   m_Center: {x: -0.0000002761194, y: 0, z: 0.48549822}
+--- !u!1 &2322951471347451311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 848926401109521463}
+  m_Layer: 0
+  m_Name: Entrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &848926401109521463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322951471347451311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2029, y: 0.463, z: 3.1836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8122357182775998473}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2804242847042186116
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +767,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3309d6d892cc15b4eb714974c4c94ba8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4479902469302646093}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3309d6d892cc15b4eb714974c4c94ba8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 848926401109521463}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -5260529763218161369, guid: 3309d6d892cc15b4eb714974c4c94ba8, type: 3}
       insertIndex: -1
